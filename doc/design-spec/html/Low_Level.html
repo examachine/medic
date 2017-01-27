@@ -1,0 +1,160 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 99.2beta8 (1.42)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Low Level</TITLE>
+<META NAME="description" CONTENT="Low Level">
+<META NAME="keywords" CONTENT="design-spec">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v99.2beta8">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="design-spec.css">
+
+<LINK REL="next" HREF="High_Level.html">
+<LINK REL="previous" HREF="Kernel.html">
+<LINK REL="up" HREF="Kernel.html">
+<LINK REL="next" HREF="High_Level.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html224"
+  HREF="High_Level.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html222"
+  HREF="Kernel.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html216"
+  HREF="Kernel.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html225"
+  HREF="High_Level.html">High Level</A>
+<B> Up:</B> <A NAME="tex2html223"
+  HREF="Kernel.html">Kernel</A>
+<B> Previous:</B> <A NAME="tex2html217"
+  HREF="Kernel.html">Kernel</A>
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION00053100000000000000">
+Low Level</A>
+</H3>
+
+<P>
+Kernel Low Level defines the following important classes as
+well as those defined in the previous section.
+
+<P>
+<SPAN  CLASS="textit">Class</SPAN> Tag:
+  A 4 bytes tag which is unique for each attribute (see PS3.5). Also
+  attributes are ordered by increasing tag number within a dataset when
+  encoded.
+
+<P>
+
+<P>
+<SPAN  CLASS="textit">Class</SPAN> DPtr:
+A pointer with a dynamic type that refers to an SOP instance. The DPtr
+can check the virtual memory system to see if the instance really exists and
+dereference.
+
+<P>
+
+<P>
+<SPAN  CLASS="textit">Class</SPAN> TransferSyntax:
+  Base class for transfer syntax classes. The transfer syntax
+  classes are static classes which supply low-level methods for data encoding
+  and decoding. Each transfer syntax class handles these tasks differently.
+  Currently, Implicit VR Little Endian, Explicit VR Little Endian, Explicit VR
+  Big Endian transfer syntaxes are in use. It would be no matter to augment
+  the remaining Transfer Syntaxes. Figure <A HREF="Low_Level.html#fig:transfersyntax">3</A>
+  shows the present transfer syntax class hiearchy.
+
+<P>
+
+<P>
+
+<P></P>
+<DIV ALIGN="CENTER"><A NAME="fig:transfersyntax"></A><A NAME="69"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 3:</STRONG>
+Transfer Syntax Class Hierarchy</CAPTION>
+<TR><TD>
+<DIV ALIGN="CENTER">
+<!-- MATH
+ $\includegraphics[scale=0.85]{transfersyntax-classhierarchy.eps}$
+ -->
+    
+</DIV></TD></TR>
+</TABLE>
+</DIV><P></P>
+
+<P>
+<SPAN  CLASS="textit">Class</SPAN> DStream:
+  Base class for DICOM Streams. Descendants of this class manage
+  streaming over TCP/IP and disk files. In figure <A HREF="Low_Level.html#fig:dstream">4</A>,
+  we see various descendants of DStream.
+
+<P>
+
+<P>
+
+<P></P>
+<DIV ALIGN="CENTER"><A NAME="fig:dstream"></A><A NAME="80"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 4:</STRONG>
+DStream Class Hierarchy</CAPTION>
+<TR><TD>
+<DIV ALIGN="CENTER">
+<!-- MATH
+ $\includegraphics[scale=1]{dstream-classhierarchy.eps}$
+ -->
+    
+</DIV></TD></TR>
+</TABLE>
+</DIV><P></P>
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html224"
+  HREF="High_Level.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html222"
+  HREF="Kernel.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html216"
+  HREF="Kernel.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html225"
+  HREF="High_Level.html">High Level</A>
+<B> Up:</B> <A NAME="tex2html223"
+  HREF="Kernel.html">Kernel</A>
+<B> Previous:</B> <A NAME="tex2html217"
+  HREF="Kernel.html">Kernel</A></DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+Eray Ozkural <erayo@cs.bilkent.edu.tr>
+</ADDRESS>
+</BODY>
+</HTML>

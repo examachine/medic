@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 99.2beta8 (1.42)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Pieces and Ties</TITLE>
+<META NAME="description" CONTENT="Pieces and Ties">
+<META NAME="keywords" CONTENT="design-spec">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v99.2beta8">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="design-spec.css">
+
+<LINK REL="next" HREF="Class_Generator.html">
+<LINK REL="previous" HREF="System_Architecture.html">
+<LINK REL="up" HREF="System_Architecture.html">
+<LINK REL="next" HREF="Class_Generator.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html192"
+  HREF="Class_Generator.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html190"
+  HREF="System_Architecture.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html184"
+  HREF="System_Architecture.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html193"
+  HREF="Class_Generator.html">Class Generator - Base</A>
+<B> Up:</B> <A NAME="tex2html191"
+  HREF="System_Architecture.html">System Architecture</A>
+<B> Previous:</B> <A NAME="tex2html185"
+  HREF="System_Architecture.html">System Architecture</A>
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00051000000000000000">
+Pieces and Ties</A>
+</H2>
+
+<P>
+MEDIC is composed of three parts: a base library which defines DICOM data
+structures, a kernel library which provides core DICOM functionality and
+a portability layer for filesystem, thread and socket support. The
+kernel library is further divided into two components: low level and
+high level kernel. In the low level fundamental data types and coder
+support reside, in the high level are SOP classes and DICOM services.
+Figure <A HREF="Pieces_Ties.html#fig:modules">1</A> depicts the high level composition.
+
+<P>
+
+<P></P>
+<DIV ALIGN="CENTER"><A NAME="fig:modules"></A><A NAME="36"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 1:</STRONG>
+High level modules in MEDIC</CAPTION>
+<TR><TD>
+<DIV ALIGN="CENTER">
+<!-- MATH
+ $\includegraphics[scale=0.35]{medic-modules.eps}$
+ -->
+    
+</DIV></TD></TR>
+</TABLE>
+</DIV><P></P>
+
+<P>
+In this design, we illustrate dependencies among modules. The
+Base module depends on class generator which translates DICOM Standard
+Data Dictionaries to C++ classes. These C++ classes are 
+
+<P>
+<BR><HR>
+<ADDRESS>
+Eray Ozkural <erayo@cs.bilkent.edu.tr>
+</ADDRESS>
+</BODY>
+</HTML>

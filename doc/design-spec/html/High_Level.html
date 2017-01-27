@@ -1,0 +1,201 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 99.2beta8 (1.42)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>High Level</TITLE>
+<META NAME="description" CONTENT="High Level">
+<META NAME="keywords" CONTENT="design-spec">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v99.2beta8">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="design-spec.css">
+
+<LINK REL="previous" HREF="Low_Level.html">
+<LINK REL="up" HREF="Kernel.html">
+<LINK REL="next" HREF="Platform.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html232"
+  HREF="Platform.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html230"
+  HREF="Kernel.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html226"
+  HREF="Low_Level.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html233"
+  HREF="Platform.html">Platform</A>
+<B> Up:</B> <A NAME="tex2html231"
+  HREF="Kernel.html">Kernel</A>
+<B> Previous:</B> <A NAME="tex2html227"
+  HREF="Low_Level.html">Low Level</A>
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION00053200000000000000">
+High Level</A>
+</H3>
+
+<P>
+The high level portion of Kernel interface features:
+
+<P>
+<SPAN  CLASS="textit">Class</SPAN> SOP:
+  Abstract base class of all SOP Classes, this abstract class defines the
+  minimal interface an SOP should support such as construction, destruction
+  and encoding/decoding.
+
+<P>
+
+<P>
+<SPAN  CLASS="textit">Class</SPAN> DException:
+  Base class for all DICOM Exceptions. Exceptions are thrown by
+  many mechanisms in the system, for instance when a protocol error occurs.
+  The DException has many subclasses which indicate different kinds of errors.
+  The MEDIC user can catch and assess these errors.
+
+<P>
+
+<P>
+
+<P></P>
+<DIV ALIGN="CENTER"><A NAME="fig:exception"></A><A NAME="94"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 5:</STRONG>
+Exception Class Hierarchy</CAPTION>
+<TR><TD>
+<DIV ALIGN="CENTER">
+<!-- MATH
+ $\includegraphics[scale=1.0]{exception-classhierarchy.eps}$
+ -->
+    
+</DIV></TD></TR>
+</TABLE>
+</DIV><P></P>
+
+<P>
+<SPAN  CLASS="textit">Class</SPAN> DStreamBuffer:
+  A stream buffer which implements DStream interface. This
+  buffer is appropriate for PDU/PDV style input/output.
+
+<P>
+
+<P>
+<SPAN  CLASS="textit">Class</SPAN> DBinaryFileStream:
+  A subclass of DStream which reads and writes to regular
+  files.
+
+<P>
+
+<P>
+<SPAN  CLASS="textit">Class</SPAN> DTCPStream:
+  A subclass of DStream which handles client stream connections
+  over TCP.
+
+<P>
+
+<P>
+<SPAN  CLASS="textit">Class</SPAN> DServerStream:
+  A special subclass of DTCPStream which is better suited for
+  server connections.
+
+<P>
+
+<P>
+<SPAN  CLASS="textit">Class</SPAN> DApplication:
+  This is the abstraction of a DICOM Application Entity. It is
+  responsible for managing various configuration parameters and maintaining
+  system data. There is only one instance of DApplication called dicom_app
+  in an application program.
+
+<P>
+
+<P>
+<SPAN  CLASS="textit">Class</SPAN> StorageManager:
+  A class which implements a simple minded virtual memory
+  scheme for large objects.
+
+<P>
+
+<P>
+<SPAN  CLASS="textit">Class</SPAN> DContext:
+  The abstraction for a DICOM association, a subclass of DContext
+  which manages execution of DICOM services.
+
+<P>
+
+<P>
+<SPAN  CLASS="textit">Class</SPAN> DTCPContext:
+  Subclass of DContext which supervises both client and server
+  association, and handling of DIMSE-C and DIMSE-N services within that
+  association.
+
+<P>
+
+<P>
+<SPAN  CLASS="textit">Class</SPAN> DFileContext:
+  Subclass of DContext responsible for reading and writing DICOM
+  files. This class implements a tentative subset of DICOM File Services
+
+<P>
+
+<P>
+<SPAN  CLASS="textit">Class</SPAN> DImageStacker:
+  This class is declared if MEDIC_ARCHIVE symbol is defined.
+  The class checks to see if a series is complete and if so sends a special
+  message to the archive system.
+
+<P>
+
+<P>
+Within the MEDIC Kernel, platform specific features are kept minimum and ANSI
+C++ library is used for all elementary data structures:
+<code>list&lt;T&gt;</code>, <code>vector&lt;T&gt;</code>, <code>map&lt;K,T&gt;</code> are used extensively.
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html232"
+  HREF="Platform.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html230"
+  HREF="Kernel.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html226"
+  HREF="Low_Level.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html233"
+  HREF="Platform.html">Platform</A>
+<B> Up:</B> <A NAME="tex2html231"
+  HREF="Kernel.html">Kernel</A>
+<B> Previous:</B> <A NAME="tex2html227"
+  HREF="Low_Level.html">Low Level</A></DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+Eray Ozkural <erayo@cs.bilkent.edu.tr>
+</ADDRESS>
+</BODY>
+</HTML>

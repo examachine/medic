@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 99.2beta8 (1.42)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Assumptions</TITLE>
+<META NAME="description" CONTENT="Assumptions">
+<META NAME="keywords" CONTENT="design-spec">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v99.2beta8">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="design-spec.css">
+
+<LINK REL="next" HREF="Constraints.html">
+<LINK REL="previous" HREF="Background.html">
+<LINK REL="up" HREF="Design_Considerations.html">
+<LINK REL="next" HREF="Constraints.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html96"
+  HREF="Constraints.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html94"
+  HREF="Design_Considerations.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html88"
+  HREF="Background.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html97"
+  HREF="Constraints.html">Constraints</A>
+<B> Up:</B> <A NAME="tex2html95"
+  HREF="Design_Considerations.html">Design Considerations</A>
+<B> Previous:</B> <A NAME="tex2html89"
+  HREF="Background.html">Background</A>
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00032000000000000000">
+Assumptions</A>
+</H2>
+
+<P>
+The implementation platform is already set as Windows NT / Microsoft Visual
+C++, so our software has to respect the selection. As an object oriented
+language, C++ is a suitable candidate for a DICOM implementation. Our
+software, named MEDIC, is designed to be close to
+ANSI C++, bearing as little dependency on VC++ as possible.
+
+<P>
+At any rate, MEDIC has been designed to be highly portable and thus
+we assume no hardware platform. We anticipate that the library can
+be made to run on top of any POSIX or WIN32 API which encompasses
+a wide range of hardware from embedded applications to workstations.
+
+<P>
+The library audience is medical application programmers who require
+DICOM compliance in their software. The library is nicely packaged
+for both GNU toolchain and Visual C++ so that programmers can quickly
+browse the source code and tutorial examples and integrate
+MEDIC functionality in their applications rapidly.
+
+<P>
+Since DICOM is continously evolving, we may expect to account for
+corrections and supplements to the standard. In the natural course,
+all final versions of the standard and essential drafts will be supported.
+
+<P>
+<BR><HR>
+<ADDRESS>
+Eray Ozkural <erayo@cs.bilkent.edu.tr>
+</ADDRESS>
+</BODY>
+</HTML>

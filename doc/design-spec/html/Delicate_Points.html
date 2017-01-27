@@ -1,0 +1,155 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 99.2beta8 (1.42)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Delicate Points</TITLE>
+<META NAME="description" CONTENT="Delicate Points">
+<META NAME="keywords" CONTENT="design-spec">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v99.2beta8">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="design-spec.css">
+
+<LINK REL="previous" HREF="Graceful_DICOM_Association.html">
+<LINK REL="up" HREF="Notes_Developer.html">
+<LINK REL="next" HREF="Detailed_System_Design.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html386"
+  HREF="Detailed_System_Design.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html384"
+  HREF="Notes_Developer.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html380"
+  HREF="Graceful_DICOM_Association.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html387"
+  HREF="Detailed_System_Design.html">Detailed System Design</A>
+<B> Up:</B> <A NAME="tex2html385"
+  HREF="Notes_Developer.html">Notes to Developer</A>
+<B> Previous:</B> <A NAME="tex2html381"
+  HREF="Graceful_DICOM_Association.html">Graceful DICOM Association</A>
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION00064800000000000000">
+Delicate Points</A>
+</H3>
+
+<P>
+Unfortunately, the library is not at the point of perfection, so future
+tasks have to be enlisted. The fleeting descriptions may not be exhaustive,
+nevertheless they elucidate the crucial issues.
+
+<P>
+Modulewise operations which work at the level of an information module are
+required. By these operations, one should be able to tell existence of a
+module (so that the application programmer may interpret which role an
+object has taken), copy, extract or move a module with the module classes.
+The mutually exclusive parts of some IOD's should also be considered at
+this stage. The MUTEX keyword in the class generator is handled rather
+awkwardly, that should be refined also. The handling of mutually exclusive
+parts would make the system superlative.
+
+<P>
+Handling pointer identifiers better in IOD::add_module() is suggested.
+Although no conflicts arise, pointer identifiers should be checked for
+collisions.
+
+<P>
+50xx and 60xx Repeating Groups are discarded altogether, for they stand as
+ad hoc mechanisms in the standard. Developer should Decode/Encode Repeating
+Groups appropriately, probably by putting in a flag in auto-gen Attributes
+and handling of repeating groups in Transfer Syntaxes. As the standard
+suggests, repeating groups are to be replaced by ordinary sequences, so the
+wisest solution is to represent repeating group modules as sequences, then
+while decoding/encoding perform suitable conversions.
+
+<P>
+Conditional Requirement Types are omitted currently, those types are coerced
+into optional ones. Of course that should be corrected by making an
+extensive condition mechanism. The most common condition is the existential,
+so that must not make much of a hardship for the classgen.
+
+<P>
+For the time being, first attribute of each module is scanned, and if they
+are not there, a skip flag for that module is set, which makes decoders of
+that attribute optional. Collisions do not have to be handled separately
+with this scheme.
+
+<P>
+The compile-time coders are a good idea, however it has little flexibility.
+The current scheme disregards error recovery while parsing. On any error,
+including even the slightest of protocol violations, the system comes to a
+halt and throws an exception. The solution comes from enriching the
+metaclass information within dataset classes. In the auto generated classes,
+there is attribute information, adequate to some extent: one can dump an
+attribute's properties. Still and all, the information is not tied in. The
+ingenious course is to write a decoder/coder method for each attribute and
+relate them with static member pointers for each attribute which are,
+surely, contained in a static data structure of the coder class which are in
+parallel with the attribute container in the dataset class. Thereupon, the
+library developer may translate some of the compile-time mechanisms to
+run-time, getting a bit more freedom of action. The resulting coder is a
+ephemeral algorithm which iteratively parses each attribute (in the encoding
+order) from the data structures just mentioned, and handles some of the
+exceptions appropriately, cushioning the application programmer from
+frequent DICOM disasters.
+
+<P>
+On careful inspection of library internals, one is likely to find some flaws
+with the streaming technique. There are unfortunately two methods for
+streaming, one depends on some internal private routines in MFC extension,
+and the other uses custom stream buffers. The stream buffer approach is more
+elegant, and the former must be replaced by it. Meantime, it would be
+incredibly useful to draw a base class for stream buffers and derive
+specializes input and output stream classes. Despite the peaceful execution
+of stream routines, these measures should be taken.
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html386"
+  HREF="Detailed_System_Design.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html384"
+  HREF="Notes_Developer.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html380"
+  HREF="Graceful_DICOM_Association.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html387"
+  HREF="Detailed_System_Design.html">Detailed System Design</A>
+<B> Up:</B> <A NAME="tex2html385"
+  HREF="Notes_Developer.html">Notes to Developer</A>
+<B> Previous:</B> <A NAME="tex2html381"
+  HREF="Graceful_DICOM_Association.html">Graceful DICOM Association</A></DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+Eray Ozkural <erayo@cs.bilkent.edu.tr>
+</ADDRESS>
+</BODY>
+</HTML>

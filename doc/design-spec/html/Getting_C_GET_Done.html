@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 99.2beta8 (1.42)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Getting C-GET Done</TITLE>
+<META NAME="description" CONTENT="Getting C-GET Done">
+<META NAME="keywords" CONTENT="design-spec">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v99.2beta8">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="design-spec.css">
+
+<LINK REL="next" HREF="Graceful_DICOM_Association.html">
+<LINK REL="previous" HREF="Adjoining_SOP_Class.html">
+<LINK REL="up" HREF="Notes_Developer.html">
+<LINK REL="next" HREF="Graceful_DICOM_Association.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html368"
+  HREF="Graceful_DICOM_Association.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html366"
+  HREF="Notes_Developer.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html360"
+  HREF="Adjoining_SOP_Class.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html369"
+  HREF="Graceful_DICOM_Association.html">Graceful DICOM Association</A>
+<B> Up:</B> <A NAME="tex2html367"
+  HREF="Notes_Developer.html">Notes to Developer</A>
+<B> Previous:</B> <A NAME="tex2html361"
+  HREF="Adjoining_SOP_Class.html">Adjoining an SOP Class</A>
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION00064600000000000000">
+Getting C-GET Done</A>
+</H3>
+
+<P>
+DICOM C-FIND and C-GET services demand a lot of attention whilst
+implementation. These services are in fact simple query services, with the
+C-FIND reporting what instances have been found, and C-GET returning
+instances themselves. However, there is more to the discussion. Firstly, the
+query services have a slightly alternate decoding/encoding for the
+indication of keys to command the query, this combined with the wildcard and
+range matching specifications make a significant burden. Secondly, and more
+important than the previous issue, the information model must suit the
+C-FIND/C-GET query model. The minimum implementation of the query services
+demand a patient rooted hierarchical information model with a wide choice of
+keys from each level of the hierarchy. The database developed for our PACS
+system, indeed has a hierarchical model as required, but plenty of the keys
+are missing.
+
+<P>
+The clever thing to do is to think in terms of client and server. The client
+part needs a way to indicate any kind of query that can be made. This could
+be over a special dataset, which goes into the query definition of the
+request message. Also, the client must collect the response is composed of
+multiple response messages into a simple structure and present them to the
+application programmer. The server side is more elaborate, however, it seems
+as though a single SQL statement construction is possible. As the keys are
+interpreted, one by one, the single statement could be grown iteratively to
+match the query. When, as the result of the query, instance UID's of the
+requested SOP instances are retrieved from the database, they can be cast
+into the response. According to the type of service (the query service
+C-FIND, or the retrieval service C-GET) ID's or instances themselves are
+emitted. The bottleneck here is the interpretation and forming of the SQL
+statement. Quite elaborate handling of the query types and codings is
+required, also the database must be tuned to fit the queries
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html368"
+  HREF="Graceful_DICOM_Association.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html366"
+  HREF="Notes_Developer.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html360"
+  HREF="Adjoining_SOP_Class.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html369"
+  HREF="Graceful_DICOM_Association.html">Graceful DICOM Association</A>
+<B> Up:</B> <A NAME="tex2html367"
+  HREF="Notes_Developer.html">Notes to Developer</A>
+<B> Previous:</B> <A NAME="tex2html361"
+  HREF="Adjoining_SOP_Class.html">Adjoining an SOP Class</A></DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+Eray Ozkural <erayo@cs.bilkent.edu.tr>
+</ADDRESS>
+</BODY>
+</HTML>

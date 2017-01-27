@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 99.2beta8 (1.42)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Adjoining an SOP Class</TITLE>
+<META NAME="description" CONTENT="Adjoining an SOP Class">
+<META NAME="keywords" CONTENT="design-spec">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v99.2beta8">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="design-spec.css">
+
+<LINK REL="next" HREF="Getting_C_GET_Done.html">
+<LINK REL="previous" HREF="SOP_Architecture.html">
+<LINK REL="up" HREF="Notes_Developer.html">
+<LINK REL="next" HREF="Getting_C_GET_Done.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html358"
+  HREF="Getting_C_GET_Done.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html356"
+  HREF="Notes_Developer.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html350"
+  HREF="SOP_Architecture.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html359"
+  HREF="Getting_C_GET_Done.html">Getting C-GET Done</A>
+<B> Up:</B> <A NAME="tex2html357"
+  HREF="Notes_Developer.html">Notes to Developer</A>
+<B> Previous:</B> <A NAME="tex2html351"
+  HREF="SOP_Architecture.html">SOP Architecture</A>
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION00064500000000000000">
+Adjoining an SOP Class</A>
+</H3>
+
+<P>
+The library purposes to support all DICOM Composite SOP classes, so addition
+or removal of a class should be made effortless. The addition of an SOP
+Class is realized in a few simple steps. First the programmer checks whether
+the data structures have been generated. If the required module and IOD
+definitions are absent, the programmer revises the relevant dictionaries,
+and generates the C++ classes which go into the ./dcl-gen directory. Then,
+the MEDIC Base Library configuration is altered so that the necessary modules
+and the IOD are compiled in. Succeeding that, a declaration similar to
+
+<P>
+<code>typedef CompositeSOPClass&lt;CTImageIOD&gt; CTImageStorage;</code>
+
+<P>
+is appended to the SOPClasses.hxx interface file. Then the static members of
+the SOP Class must be defined, probably in SOP.cxx file. In addition to
+this, the initialization method of SOPs class must be altered so that the
+new SOP Class gets registered. It might be a good idea to automate some of
+this process by expanding the class generator, so that for instance the
+registration routines are also automatically generated.
+
+<P>
+<BR><HR>
+<ADDRESS>
+Eray Ozkural <erayo@cs.bilkent.edu.tr>
+</ADDRESS>
+</BODY>
+</HTML>

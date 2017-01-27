@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 99.2beta8 (1.42)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Architectural Strategies</TITLE>
+<META NAME="description" CONTENT="Architectural Strategies">
+<META NAME="keywords" CONTENT="design-spec">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v99.2beta8">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="design-spec.css">
+
+<LINK REL="next" HREF="System_Architecture.html">
+<LINK REL="previous" HREF="Design_Considerations.html">
+<LINK REL="up" HREF="design-spec.html">
+<LINK REL="next" HREF="Application_Framework.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html124"
+  HREF="Application_Framework.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html122"
+  HREF="design-spec.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html116"
+  HREF="Objectives.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html125"
+  HREF="Application_Framework.html">Application Framework</A>
+<B> Up:</B> <A NAME="tex2html123"
+  HREF="design-spec.html">MEDIC Extends DICOM Imaging</A>
+<B> Previous:</B> <A NAME="tex2html117"
+  HREF="Objectives.html">Objectives</A>
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00040000000000000000">
+Architectural Strategies</A>
+</H1>
+
+<P>
+We have used standard system software for developing the library. Most
+of the library is standard C++. For the compiler we have used GNU
+flex/bison. On windows, MFC is used for platform specific
+functionality.
+
+<P>
+The library has simple exception based error handling. All system
+errors and protocol violations are interpreted as exceptions. No
+attempt is made to recover from parsing because all DICOM data has to
+be well formed.
+
+<P>
+Memory management and persistence is achieved through a custom virtual
+memory system and smart pointers with hooks to the virtual memory. It
+consists of LRU paging of objects to disk and modified objects
+streamed back to disk occasionally. Persistent objects are scanned at
+the beginning of each invocation. User can create either transient or
+persistent DICOM objects.
+
+<P>
+DICOM SCPs are implemented as a multithreaded server. Each service
+request is performed concurrently on its own thread and they share
+resources such as the persistent object store.
+
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL>
+<LI><A NAME="tex2html126"
+  HREF="Application_Framework.html">Application Framework</A>
+<LI><A NAME="tex2html127"
+  HREF="Faithful_Translation_Standa.html">Faithful Translation of the Standard</A>
+<LI><A NAME="tex2html128"
+  HREF="Coders.html">Coders</A>
+<LI><A NAME="tex2html129"
+  HREF="Contexts_SOP_Classes.html">Contexts, SOP Classes</A>
+</UL>
+<!--End of Table of Child-Links-->
+<BR><HR>
+<ADDRESS>
+Eray Ozkural <erayo@cs.bilkent.edu.tr>
+</ADDRESS>
+</BODY>
+</HTML>

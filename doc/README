@@ -1,0 +1,46 @@
+MEDIC README
+------------
+
+Sep 26 1999
+
+Eray Ozkural
+
+First Draft
+
+Medic is a library for medical imaging and communications implementing the DICOM 3.0
+standard by NEMA. (1) The library has been written in C++, and is licensed under
+the GPL. (2) Medic stands for 'MEDIC Extends DICOM Imaging and Communications' since
+its main goal is to achieve an edible interface that makes developing DICOM
+conforming applications sane and to provides a comprehensive and robust framework
+for medical imaging applications. Since the DICOM applications have
+usually been tremendously expensive, the hope lies that quality free software
+DICOM applications will take advantage of this library.
+
+History
+
+Medic has been developed at the Electronics Engineering department of Bilkent
+University, Ankara as part of the PACS (Picture Archiving System) project named
+RAGARIS (Radyolojik Goruntuleme ve Arsivleme?) The library was then called the DCL,
+which stands for Dicom Class Library. Although the project was an absolutely closed
+source one, it has always been the author's intention to put it under GPL's terms.
+Unfortunately, it was not clear how it could be achieved. Following a speech given
+by Richard Stallman at our faculty, our project supervisor suggested that we did so.
+
+DCL was implemented as static libraries in Microsoft Visual C++. Nevertheless, the
+translator and the first batch of libraries that implemented DICOM functionality
+were developed on a Debian GNU/Linux system. An advantage of the library
+has been that platform independence was not compromised by making the software too
+dependent on proprietary software (In this case Win32 platform and MFC) Thus the
+MFC functionality was wrapped with a smaller static library, consisting mostly of
+multithreading and TCP/IP code. Porting to the GNU system began on 26th on the September, and the entire port has taken only x days.
+
+Features
+
+Installation
+
+ - Packages
+
+Interface
+
+Resources
+

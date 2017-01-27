@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 99.2beta8 (1.42)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>User Protocol</TITLE>
+<META NAME="description" CONTENT="User Protocol">
+<META NAME="keywords" CONTENT="design-spec">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v99.2beta8">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="design-spec.css">
+
+<LINK REL="next" HREF="Build_System.html">
+<LINK REL="previous" HREF="Policies.html">
+<LINK REL="up" HREF="Policies.html">
+<LINK REL="next" HREF="Build_System.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html272"
+  HREF="Build_System.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html270"
+  HREF="Policies.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html264"
+  HREF="Policies.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html273"
+  HREF="Build_System.html">Build System</A>
+<B> Up:</B> <A NAME="tex2html271"
+  HREF="Policies.html">Policies</A>
+<B> Previous:</B> <A NAME="tex2html265"
+  HREF="Policies.html">Policies</A>
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00061000000000000000">
+User Protocol</A>
+</H2>
+
+<P>
+The application programmer adheres to some conventions to assure DICOM
+compliance. The user is committed to the deployment of SCU only, the SCP is
+handled automatically by the DCL system.
+
+<P>
+Client programming is straightforward, since the DCL does not support
+asynchronous operation. Calls to DICOM services do not return until
+completion or error occurrence. Generally, the user works on the SOP
+instances, and applies DICOM services over Context classes. Currently, two
+Context classes are supported, first of which is DTCPContext and second is
+DFileContext.
+
+<P>
+With DTCPContext, the user first establishes an association with a SCP
+Application Entity; then, the programmer performs any number of DICOM
+services with the peer AE. Fatal errors cause exceptions to be thrown; it is
+advisable that the programmer handles exceptions. After all operations
+cease, the MEDIC user closes the connection by releasing the association. On
+the other hand, with the DFileContext, the user can read and write single
+DICOM files. Note that the DICOM directory structure is not yet implemented.
+
+<P>
+<BR><HR>
+<ADDRESS>
+Eray Ozkural <erayo@cs.bilkent.edu.tr>
+</ADDRESS>
+</BODY>
+</HTML>

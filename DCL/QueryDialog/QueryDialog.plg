@@ -1,0 +1,178 @@
+--------------------Configuration: QueryDialog - Win32 Debug--------------------
+Begining build with project "C:\DCL\QueryDialog\QueryDialog.dsp", at root.
+Active configuration is Win32 (x86) Application (based on Win32 (x86) Application)
+
+Project's tools are:
+			"32-bit C/C++ Compiler for 80x86" with flags "/nologo /MDd /W3 /Gm /GX /Zi /Od /I "..\dcl-kernel\src" /I "..\kernel mfc lib\src" /I "..\dcl-gen" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /FR"Debug/" /Fp"Debug/QueryDialog.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /Zm200 /c "
+			"OLE Type Library Maker" with flags "/nologo /D "_DEBUG" /mktyplib203 /o NUL /win32 "
+			"Win32 Resource Compiler" with flags "/l 0x409 /fo"Debug/QueryDialog.res" /d "_DEBUG" /d "_AFXDLL" "
+			"Browser Database Maker" with flags "/nologo /o"Debug/QueryDialog.bsc" "
+			"COFF Linker for 80x86" with flags "..\lib\dcl-kernel-debug.lib ..\lib\dcl-kernel-mfc-debug.lib ..\lib\dcl-base-debug.lib /nologo /subsystem:windows /incremental:yes /pdb:"Debug/QueryDialog.pdb" /map:"Debug/QueryDialog.map" /debug /machine:I386 /out:"Debug/QueryDialog.exe" /pdbtype:sept "
+			"Custom Build" with flags ""
+			"<Component 0xa>" with flags ""
+
+Creating temp file "D:\TEMP\RSP59.tmp" with contents </nologo /MDd /W3 /Gm /GX /Zi /Od /I "..\dcl-kernel\src" /I "..\kernel mfc lib\src" /I "..\dcl-gen" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /FR"Debug/" /Fp"Debug/QueryDialog.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /Zm200 /c 
+"C:\DCL\QueryDialog\QueryDialogDlg.cpp"
+>
+Creating command line "cl.exe @D:\TEMP\RSP59.tmp" 
+Creating temp file "D:\TEMP\RSP5A.tmp" with contents <..\lib\dcl-kernel-debug.lib ..\lib\dcl-kernel-mfc-debug.lib ..\lib\dcl-base-debug.lib /nologo /subsystem:windows /incremental:yes /pdb:"Debug/QueryDialog.pdb" /map:"Debug/QueryDialog.map" /debug /machine:I386 /out:"Debug/QueryDialog.exe" /pdbtype:sept 
+.\Debug\QueryDialog.obj
+.\Debug\QueryDialogDlg.obj
+.\Debug\StdAfx.obj
+.\Debug\QueryDialog.res
+"\DCL\lib\dcl-base-debug.lib"
+"\DCL\lib\dcl-kernel-debug.lib"
+"\DCL\lib\dcl-kernel-mfc-debug.lib">
+Creating command line "link.exe @D:\TEMP\RSP5A.tmp" 
+Compiling...
+QueryDialogDlg.cpp
+..\dcl-kernel\src\TransferSyntaxes.hxx(76) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(85) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(76) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(85) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(76) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(85) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(76) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(85) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(76) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(85) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(76) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(85) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(76) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(85) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(76) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(85) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(76) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(85) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(76) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(85) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(76) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(85) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(76) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(85) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(76) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(85) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(76) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(85) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(76) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(85) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(76) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(85) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(76) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(85) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(76) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(85) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(76) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(85) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(76) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(85) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(76) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(85) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(76) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(85) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(76) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(85) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(76) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(85) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(76) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(85) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(76) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(85) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(76) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(85) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(76) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(85) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(76) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(85) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(76) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(85) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(76) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(85) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(76) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(85) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(76) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(85) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(76) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(85) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(76) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(85) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(76) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(85) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(76) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(85) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(76) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(85) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(76) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(85) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(76) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(85) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(76) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(85) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(76) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(85) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(76) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(85) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(76) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(85) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(76) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(85) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(76) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(85) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(76) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(85) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(76) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(85) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(76) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(85) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(76) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(85) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(76) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(85) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(76) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(85) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(76) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(85) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(76) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(85) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(76) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(85) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(76) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(85) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(76) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(85) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(76) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(85) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(76) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(85) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(76) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(85) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(76) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(85) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(76) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(85) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(76) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(85) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(76) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(85) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(76) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(85) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(76) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(85) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(76) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(85) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(76) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(85) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(76) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(85) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(76) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(85) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(76) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+..\dcl-kernel\src\TransferSyntaxes.hxx(85) : warning C4541: 'dynamic_cast' used on polymorphic type 'class SOP' with /GR-; unpredictable behavior may result
+D:\Program Files\DevStudio\VC\INCLUDE\xutility(45) : warning C4804: '<' : unsafe use of type 'bool' in operation
+D:\Program Files\DevStudio\VC\INCLUDE\xutility(47) : warning C4804: '<' : unsafe use of type 'bool' in operation
+Linking...
+LINK : warning LNK4075: ignoring /INCREMENTAL due to /MAP specification
+
+
+
+QueryDialog.exe - 0 error(s), 145 warning(s)

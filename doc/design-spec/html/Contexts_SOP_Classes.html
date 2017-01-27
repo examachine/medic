@@ -1,0 +1,76 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 99.2beta8 (1.42)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Contexts, SOP Classes</TITLE>
+<META NAME="description" CONTENT="Contexts, SOP Classes">
+<META NAME="keywords" CONTENT="design-spec">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v99.2beta8">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="design-spec.css">
+
+<LINK REL="previous" HREF="Coders.html">
+<LINK REL="up" HREF="Architectural_Strategies.html">
+<LINK REL="next" HREF="System_Architecture.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html166"
+  HREF="System_Architecture.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html164"
+  HREF="Architectural_Strategies.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html160"
+  HREF="Coders.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html167"
+  HREF="System_Architecture.html">System Architecture</A>
+<B> Up:</B> <A NAME="tex2html165"
+  HREF="Architectural_Strategies.html">Architectural Strategies</A>
+<B> Previous:</B> <A NAME="tex2html161"
+  HREF="Coders.html">Coders</A>
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00044000000000000000">
+Contexts, SOP Classes</A>
+</H2>
+
+<P>
+All DICOM operations are executed within a DICOM Context which is
+an abstraction that provides the necessary means to complete the
+operation. The user constructs a Context object, and then tells the
+context object to perform an operation. TCP and Media operations are
+current types of Context objects.
+
+<P>
+To be of any utility, an operation usually has to refer to an object.
+The objects that the operations use are SOP objects. As a matter of
+fact, SOP Classes are C++ classes in MEDIC. An example is
+CTImageStorage which can be c-stored over a TCP Context.
+
+<P>
+<BR><HR>
+<ADDRESS>
+Eray Ozkural <erayo@cs.bilkent.edu.tr>
+</ADDRESS>
+</BODY>
+</HTML>

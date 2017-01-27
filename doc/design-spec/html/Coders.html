@@ -1,0 +1,75 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 99.2beta8 (1.42)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Coders</TITLE>
+<META NAME="description" CONTENT="Coders">
+<META NAME="keywords" CONTENT="design-spec">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v99.2beta8">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="design-spec.css">
+
+<LINK REL="next" HREF="Contexts_SOP_Classes.html">
+<LINK REL="previous" HREF="Faithful_Translation_Standa.html">
+<LINK REL="up" HREF="Architectural_Strategies.html">
+<LINK REL="next" HREF="Contexts_SOP_Classes.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html158"
+  HREF="Contexts_SOP_Classes.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html156"
+  HREF="Architectural_Strategies.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html150"
+  HREF="Faithful_Translation_Standa.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html159"
+  HREF="Contexts_SOP_Classes.html">Contexts, SOP Classes</A>
+<B> Up:</B> <A NAME="tex2html157"
+  HREF="Architectural_Strategies.html">Architectural Strategies</A>
+<B> Previous:</B> <A NAME="tex2html151"
+  HREF="Faithful_Translation_Standa.html">Faithful Translation of the</A>
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00043000000000000000">
+Coders</A>
+</H2>
+
+<P>
+All decoding/encoding is encapsulated in Coder classes which are
+found in every DICOM class from fundamental data types to datasets.
+Coders are a uniform interface that make it easier to abstractand
+generalize these operations. Typically a Coder works with a Transfer
+Syntax and a Stream class. The Transfer Syntax is an implementation
+of a DICOM Transfer Syntax and a Stream abstract reading and writing
+DICOM streams. This design has been successful for we have been able
+to extend coders to 6 Transfer Syntaxes and 3 Stream types including
+a buffer stream, a file stream and a TCP stream.
+
+<P>
+<BR><HR>
+<ADDRESS>
+Eray Ozkural <erayo@cs.bilkent.edu.tr>
+</ADDRESS>
+</BODY>
+</HTML>

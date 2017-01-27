@@ -1,0 +1,124 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 99.2beta8 (1.42)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Introduction</TITLE>
+<META NAME="description" CONTENT="Introduction">
+<META NAME="keywords" CONTENT="design-spec">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v99.2beta8">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="design-spec.css">
+
+<LINK REL="next" HREF="System_Overview.html">
+<LINK REL="previous" HREF="design-spec.html">
+<LINK REL="up" HREF="design-spec.html">
+<LINK REL="next" HREF="System_Overview.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html52"
+  HREF="System_Overview.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html50"
+  HREF="design-spec.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html44"
+  HREF="design-spec.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html53"
+  HREF="System_Overview.html">System Overview</A>
+<B> Up:</B> <A NAME="tex2html51"
+  HREF="design-spec.html">MEDIC Extends DICOM Imaging</A>
+<B> Previous:</B> <A NAME="tex2html45"
+  HREF="design-spec.html">MEDIC Extends DICOM Imaging</A>
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00010000000000000000">
+Introduction</A>
+</H1>
+
+<P>
+Through many years of worldwide experience of digital medicine, a standard
+known as DICOM has emerged. The standard is a thorough collection of
+documents which determine many aspects of operation and communication of
+devices which support digital imaging in medicine. It has been the de facto
+industry standard for years and the most recent one is DICOM 3.0 that was
+published by NEMA in 1997.
+
+<P>
+In brief, the standard directly addresses the communication, storage and
+retrieval of medical imaging data, and other aspects of digital systems such
+as a patient information system and printing. It is not the purpose of this
+report to duplicate the numerous definitions and protocols of the DICOM
+standard in this document. Rather, the reader is encouraged to refer to the
+standard itself. Though lengthy, many of the main issues are to be best
+found in the 14 parts of the standard. The emphasis of this document is on
+our design and implementation of DICOM 3.0.
+
+<P>
+The standard is based on an object oriented information model to be able to
+account for the conceptual depth and flexibility required by a medical
+imaging system. The message passing (over TCP/IP), distributed, persistent
+object system makes realization of a versatile and sizable PACS possible.
+Once dealt appropriately DICOM makes things easier. However, DICOM itself is
+fairly big: the current implementation supports the 24*5 primitive data
+types (see PS3.5), 895 attribute types (see PS3.6), 103 information module
+classes, 35 information object classes (composite and normalized, see PS3.3)
+and 25 messages (see PS3.7). Obviously, DICOM represents many technical
+challenges caused by its sheer complexity. Clear design directions had to be
+taken, and most features of the standard have been successfully implemented.
+
+<P>
+This report describes the library by first
+elucidating the design issues. Consequently, we 
+report an overview of architectural components and supply a class
+reference at a medium level of detail which furnishes insight into the
+implementation.
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html52"
+  HREF="System_Overview.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html50"
+  HREF="design-spec.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html44"
+  HREF="design-spec.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html53"
+  HREF="System_Overview.html">System Overview</A>
+<B> Up:</B> <A NAME="tex2html51"
+  HREF="design-spec.html">MEDIC Extends DICOM Imaging</A>
+<B> Previous:</B> <A NAME="tex2html45"
+  HREF="design-spec.html">MEDIC Extends DICOM Imaging</A></DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+Eray Ozkural <erayo@cs.bilkent.edu.tr>
+</ADDRESS>
+</BODY>
+</HTML>

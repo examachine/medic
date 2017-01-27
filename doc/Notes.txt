@@ -1,0 +1,56 @@
+o somewhat fixed the ignore_elt bug in TS implementations, it did an invalidate_tag in the beginning ;)
+
+o The OB/OW conditional attributes implementation suck, because the specification in the standard sucks. I
+just handled the decoders and not encoders. Thus, be wary! The implementation does the following
+  -- Handles only Pixel Data properly, and only when reading
+  -- The type for Pixel Data seems OW by default, but it is indeed an array of bytes when
+     a) Transfer Syntax is Explicit VR and BitsAllocated <= 8
+	 b) Encapsulated Image Transfer Syntax (JPEG) used
+  -- In order to access raw data use data() member function
+
+o Basic Cardiographic XA Application Profile defines Icon Image Sequence, in which you're given icons for
+identifying the images. See if relevant.
+
+o The Transfer Syntax for CR images seems to be lossy JPEG, check it out.
+
+o SOPs::init_class() has some classes' sop_tss's missing! this means that those SOPs cannot be decoded/encoded
+  by giving a Transfer Syntax UID at the moment. Solution is via reconsideration of SOP_TSs init_class() method
+
+o the PDU decode/encode subsystem still bears duality. the obscure method employed now
+is obtaining pdu_length from DServerStream.. which is a bit hideous. the PDU objects
+should be more autonomous
+
+o an application no more needs to support MFC sockets, i put that piece of code into the
+library
+
+o the DCL_VIEWING_STATION and DCL_ARCHIVE preprocessor symbols are discarded. Instead the
+DApplication::init_class(...) has new arguments. The DApplication::Role defines the 'role'
+of the DCL application, currently it can be either of DApplication::viewing_application and
+DApplication::archive_application. Since the role is set at initialization time, the same
+binaries of DCL can be used for all applications. It is now easy to decide which SCP's work
+in these modes, also addition of new roles is possible. The default role is viewing_application.
+
+o examine the DPtr class. DCL users have to use it. the DPtr class can be constructed
+either with one parameter (only specifying instance UID), or with two parameters (specifying
+first class UID, second instance UID).
+
+o changed the archive script, it's under dcl dir, and it works better
+
+o not a bug really, but using the ref operations (which permit you to
+perform non const methods on VM>1 attributes and sequences in general)
+is a bit tricky. Prior to doing a modification, do a dummy mod..() to
+notify your action.
+
+o The DCL development repositories on our Primary servers Poseidon and
+Hades are contaminated with the *binary* stable versions of the library.
+This means you can just copy the binaries (DCL/bin directory) and sources
+(DCL/Kernel MFC Lib, ... ) and you should be done ->without<- recompiling,
+which takes a lot of time. Until a binary archiving script is written
+(which is trivial), you can just make sure things are in order by just
+copying over all the files. Please check the newest among Poseidon and Hades.
+^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
+o The source repositories contain both Debug and Release builds. The release
+version works 100 times faster than the Debug one, so check that.
+
+o Please report bugs to both Umut and Eray
+

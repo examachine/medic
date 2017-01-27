@@ -1,0 +1,155 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 99.2beta8 (1.42)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Constraints</TITLE>
+<META NAME="description" CONTENT="Constraints">
+<META NAME="keywords" CONTENT="design-spec">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v99.2beta8">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="design-spec.css">
+
+<LINK REL="next" HREF="Objectives.html">
+<LINK REL="previous" HREF="Assumptions.html">
+<LINK REL="up" HREF="Design_Considerations.html">
+<LINK REL="next" HREF="Objectives.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html106"
+  HREF="Objectives.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html104"
+  HREF="Design_Considerations.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html98"
+  HREF="Assumptions.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html107"
+  HREF="Objectives.html">Objectives</A>
+<B> Up:</B> <A NAME="tex2html105"
+  HREF="Design_Considerations.html">Design Considerations</A>
+<B> Previous:</B> <A NAME="tex2html99"
+  HREF="Assumptions.html">Assumptions</A>
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00033000000000000000">
+Constraints</A>
+</H2>
+
+<P>
+The library presupposes a rather modest hardware/software setup. We
+assume no more than baseline development tools and standard
+libraries. In the platform independent portion, we use only ANSI C++
+and its standard library. On GNU platforms, the GNU toolchain and
+standard socket and thread libraries are utilized. The Visual C++
+version uses MFC for all functionality.
+
+<P>
+The framework is compiled as either a static or shared library
+according to the platform. On Visual C++, due to compiler and linker
+peculiarities we have to build a static library. The framework
+has a simple invocation consisting of only a single initalization
+entry point.
+
+<P>
+The resources used by MEDIC are quite standard, we make use of
+file, TCP/IP, multithreading and timer services from underlying OS
+through appropriate APIs.
+
+<P>
+The library is a fairly complete implementation of DICOM and it
+implements 11 of the 13 volumes of DICOM 3.0 standard. Since it
+uses TCP sockets, the reader is referred to RFC's
+detailing TCP/IP protocol.
+
+<P>
+Interoperability is achieved through DICOM communications over TCP/IP.
+MEDIC implements only synchronous mode transfers because there does not
+seem to be a good framework for writing convenient asynchronous code
+in C++.
+
+<P>
+Each Application Entity is supposed to run on a single machine. A
+DICOM Application Entity has a persistent store of DICOM objects
+and distribution is achieved through DICOM store, get and move
+commands.
+
+<P>
+No security measures are taken as we simply assume that anyone
+who can make a TCP connection is a trusted party and the system
+is open in the sense that it has been designed as an Internet
+application protocol. Security against malicious attacks can
+be arranged simply by putting critical services inside a private
+IP network that is not visible to outside world and placing
+public access services on a node that is visible to whole Internet.
+
+<P>
+The implementation has no hard limits in the tradition of
+modern system software. There are however user settings
+that may be mentioned here. First, the implementation requires
+free secondary storage to store persistent objects. The maximum
+memory and disk space used by persistent store is also set by the
+user. User can also set the maximum number of open connections
+to DICOM server.
+
+<P>
+Since the application runs in a single user process space, 
+message passing overhead is very low. Furthermore, 
+binary encoding/decoding is performed on the fly enhancing
+performance. The only bottleneck we have observed is
+the stdio and iostream implementation on WIN32 platforms.
+
+<P>
+The applications that use the library have been tested using
+Agfa DICOM Validation Tool and DICOMTK. Also, the library has
+been stress tested during the development and testing of
+RAGARIS PACS applications.
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html106"
+  HREF="Objectives.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html104"
+  HREF="Design_Considerations.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html98"
+  HREF="Assumptions.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html107"
+  HREF="Objectives.html">Objectives</A>
+<B> Up:</B> <A NAME="tex2html105"
+  HREF="Design_Considerations.html">Design Considerations</A>
+<B> Previous:</B> <A NAME="tex2html99"
+  HREF="Assumptions.html">Assumptions</A></DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+Eray Ozkural <erayo@cs.bilkent.edu.tr>
+</ADDRESS>
+</BODY>
+</HTML>

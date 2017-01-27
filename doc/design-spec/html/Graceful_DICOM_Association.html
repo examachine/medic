@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 99.2beta8 (1.42)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Graceful DICOM Association</TITLE>
+<META NAME="description" CONTENT="Graceful DICOM Association">
+<META NAME="keywords" CONTENT="design-spec">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v99.2beta8">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="design-spec.css">
+
+<LINK REL="next" HREF="Delicate_Points.html">
+<LINK REL="previous" HREF="Getting_C_GET_Done.html">
+<LINK REL="up" HREF="Notes_Developer.html">
+<LINK REL="next" HREF="Delicate_Points.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html378"
+  HREF="Delicate_Points.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html376"
+  HREF="Notes_Developer.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html370"
+  HREF="Getting_C_GET_Done.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html379"
+  HREF="Delicate_Points.html">Delicate Points</A>
+<B> Up:</B> <A NAME="tex2html377"
+  HREF="Notes_Developer.html">Notes to Developer</A>
+<B> Previous:</B> <A NAME="tex2html371"
+  HREF="Getting_C_GET_Done.html">Getting C-GET Done</A>
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION00064700000000000000">
+Graceful DICOM Association</A>
+</H3>
+
+<P>
+All DICOM application entities must implement the DICOM Protocol Machine.
+The machine is convoluted in nature, and works by passing by PDU's
+according to a FSM. The establishment and closing of the association is very
+important and must be tested severely, since all DICOM operations depend on
+a live association. The protocol machine in MEDIC has been implemented in an
+elegant fashion, however it has incomplete parts. For a graceful association
+every possible move of the protocol machine must be handled and caressed.
+Effectively, the ARTIM timers and presentation context passing is missing in
+the MEDIC protocol machine. However, since the infrastructure is complete,
+little work remains. In the case of ARTIM timers, in some events a timer
+must be started, and the time-out causes the connection to close. The timers
+were not required for the test purposes, so they were omitted. However
+implementing the timers is not tricky. A single NT timer should be allocated
+at all times, with the other timers handled via timer queue. (NT has a
+limited number of timers) For presentation context implementation, only the
+associate client and server methods in the DTCPContext have to be dealt
+with. The associated PDU's are in majority complete, and plugging in a
+presentation context in the DTCPContext class must not be much of a problem.
+On that occasion, the PDV list passing must also be completed to full
+operation and efficiency.
+
+<P>
+Another advise would be separation of DTCPContext into a client class and a
+server class. Moreover, clustering DICOM Service Groups into corresponding
+classes is a good idea. Print Management has been done in that fashion.
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html378"
+  HREF="Delicate_Points.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html376"
+  HREF="Notes_Developer.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html370"
+  HREF="Getting_C_GET_Done.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html379"
+  HREF="Delicate_Points.html">Delicate Points</A>
+<B> Up:</B> <A NAME="tex2html377"
+  HREF="Notes_Developer.html">Notes to Developer</A>
+<B> Previous:</B> <A NAME="tex2html371"
+  HREF="Getting_C_GET_Done.html">Getting C-GET Done</A></DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+Eray Ozkural <erayo@cs.bilkent.edu.tr>
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 99.2beta8 (1.42)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Faithful Translation of the Standard</TITLE>
+<META NAME="description" CONTENT="Faithful Translation of the Standard">
+<META NAME="keywords" CONTENT="design-spec">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v99.2beta8">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="design-spec.css">
+
+<LINK REL="next" HREF="Coders.html">
+<LINK REL="previous" HREF="Application_Framework.html">
+<LINK REL="up" HREF="Architectural_Strategies.html">
+<LINK REL="next" HREF="Coders.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html148"
+  HREF="Coders.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html146"
+  HREF="Architectural_Strategies.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html140"
+  HREF="Application_Framework.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html149"
+  HREF="Coders.html">Coders</A>
+<B> Up:</B> <A NAME="tex2html147"
+  HREF="Architectural_Strategies.html">Architectural Strategies</A>
+<B> Previous:</B> <A NAME="tex2html141"
+  HREF="Application_Framework.html">Application Framework</A>
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00042000000000000000">
+Faithful Translation of the Standard</A>
+</H2>
+
+<P>
+In order to ensure correspondence with the original standard, we have
+followed a translation approach. We have converted all relevant
+dictionaries into machine readable format which is translated directly
+to C++ code. For instance, Patient Information Module is translated
+into a class called PatientInformationModule with canonical methods
+and inner classes for attribute-wise operations, decoding, string dump,
+etc. 
+
+<P>
+By writing a compiler, we obtain many benefits at once. First, we can
+convert DICOM abstractions such as modules, IODs and messages directly
+into C++ classes which cannot be done otherwise because there are too
+many of them. Second, we can be sure that compiler makes a lot of
+checks on the consistency of generated code and conformance to DICOM
+standard. The compiler will yield error messages if one attempts as
+such. Much of the discrepancy has been discovered by the compiler
+allowing us to make the implementation more rigorous. Also, the
+closeness of the machine readable files to actual standards documents
+is a benefit because it is very easy to extend the implementation.
+
+<P>
+<BR><HR>
+<ADDRESS>
+Eray Ozkural <erayo@cs.bilkent.edu.tr>
+</ADDRESS>
+</BODY>
+</HTML>

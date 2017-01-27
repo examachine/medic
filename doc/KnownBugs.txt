@@ -1,0 +1,11 @@
+BUG REPORTS-----------
+** In a nested class, sometimes referring to the enclosing class gives rise to errors!
+Compiler Error C2027
+use of undefined type 'identifier'
+
+The specified type was not defined.
+
+A type cannot be used until it is defined.
+
+Although the same thing works with simpler classes!!!
+** template implementation bug: template instantiation is problematic when nested classesare referred to as in:   template <class A> class B : map <int, A::X*> {   };       where class A::X has pure virtual functions   it seems that this is due to a severe bug in Microsoft STL implementation... or (its assumptions   about the Microsoft C++ compiler which is also buggy)** In the following code segment, the the conditional expression isworth a look. The lines commented out cause a runtime error. Althoughthe typeid says the types are compatible you just can't do a dynamiccast. Static casts work perfectly though.		SOP & query_identifier = dicom_app.sops[class_uid]->gen();		in.begin_read(TCP_PDATA::data_set);		query_identifier.decode(in, ts_uid);		in.end_read();		// check our information model and query/retrieve level		if ( typeid(query_identifier).before(typeid(PatientRootQRInfoModelFIND&)) ) {			info_model = patient_root;			//PatientRootQRInfoModelFIND identifier = dynamic_cast<PatientRootQRInfoModelFIND&>(query_identifier);			//PatientRootQRInfoModelFIND* identifier = dynamic_cast<PatientRootQRInfoModelFIND*>(&query_identifier);			PatientRootQRInfoModelFIND* identifier = (PatientRootQRInfoModelFIND*)(&query_identifier);** very mysterious	list<SOP*> matched_identifiers;	matched_identifiers = context.cfind(identifier);  works, but	list<SOP*> matched_identifiers = context.cfind(identifier);  doesn't work...

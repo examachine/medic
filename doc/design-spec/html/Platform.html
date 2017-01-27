@@ -1,0 +1,145 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 99.2beta8 (1.42)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Platform</TITLE>
+<META NAME="description" CONTENT="Platform">
+<META NAME="keywords" CONTENT="design-spec">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v99.2beta8">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="design-spec.css">
+
+<LINK REL="previous" HREF="Kernel.html">
+<LINK REL="up" HREF="System_Architecture.html">
+<LINK REL="next" HREF="Policies.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html240"
+  HREF="Policies.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html238"
+  HREF="System_Architecture.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html234"
+  HREF="High_Level.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html241"
+  HREF="Policies.html">Policies</A>
+<B> Up:</B> <A NAME="tex2html239"
+  HREF="System_Architecture.html">System Architecture</A>
+<B> Previous:</B> <A NAME="tex2html235"
+  HREF="High_Level.html">High Level</A>
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00054000000000000000">
+Platform</A>
+</H2>
+
+<P>
+This part of MEDIC is platform specific. The following classes employ
+the platform specific services to obtain  desired functionality. On
+WIN32 platforms, MFC is used to that end and on POSIX we use pthreads
+and BSD socket library.
+
+<P>
+<SPAN  CLASS="textit">Class</SPAN> ListenerSocket:
+  Subclass of Socket that listens to the DICOM port of AE
+  all the time spawning children server connections appropriately.
+
+<P>
+
+<P>
+<SPAN  CLASS="textit">Class</SPAN> ListenerThread:
+  dicom_app started thread which initiates the DICOM SCP.
+
+<P>
+
+<P>
+<SPAN  CLASS="textit">Class</SPAN> CustomSocket:
+  Subclass of Socket which is capable of processing PDUs.
+
+<P>
+
+<P>
+<SPAN  CLASS="textit">Class</SPAN> ClientSocket:
+  Subclass of CustomSocket which is intended for client
+  connections, sends a message to calling thread on end of transmission.
+
+<P>
+
+<P>
+<SPAN  CLASS="textit">Class</SPAN> ClientThread:
+  Thread that is started when a client connection is going
+  underway.
+
+<P>
+
+<P>
+<SPAN  CLASS="textit">Class</SPAN> ServerSocket:
+  Subclass of CustomSocket which is intended for server
+  connections. On receipt of a PDU it executes its DTCPContext which is in
+  server mode.
+
+<P>
+
+<P>
+<SPAN  CLASS="textit">Class</SPAN> ServerThread:
+  Thread that is started when a new server connection is made.
+
+<P>
+
+<P>
+<SPAN  CLASS="textit">Class</SPAN> CTEmulator:
+  A dialog which essentially emulates a CT machine that can perform
+  various DICOM operations for testing.
+
+<P>
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html240"
+  HREF="Policies.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html238"
+  HREF="System_Architecture.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html234"
+  HREF="High_Level.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html241"
+  HREF="Policies.html">Policies</A>
+<B> Up:</B> <A NAME="tex2html239"
+  HREF="System_Architecture.html">System Architecture</A>
+<B> Previous:</B> <A NAME="tex2html235"
+  HREF="High_Level.html">High Level</A></DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+Eray Ozkural <erayo@cs.bilkent.edu.tr>
+</ADDRESS>
+</BODY>
+</HTML>

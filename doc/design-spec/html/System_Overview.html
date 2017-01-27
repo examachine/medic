@@ -1,0 +1,125 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 99.2beta8 (1.42)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>System Overview</TITLE>
+<META NAME="description" CONTENT="System Overview">
+<META NAME="keywords" CONTENT="design-spec">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v99.2beta8">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="design-spec.css">
+
+<LINK REL="next" HREF="Design_Considerations.html">
+<LINK REL="previous" HREF="Introduction.html">
+<LINK REL="up" HREF="design-spec.html">
+<LINK REL="next" HREF="Design_Considerations.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html62"
+  HREF="Design_Considerations.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html60"
+  HREF="design-spec.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html54"
+  HREF="Introduction.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html63"
+  HREF="Design_Considerations.html">Design Considerations</A>
+<B> Up:</B> <A NAME="tex2html61"
+  HREF="design-spec.html">MEDIC Extends DICOM Imaging</A>
+<B> Previous:</B> <A NAME="tex2html55"
+  HREF="Introduction.html">Introduction</A>
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00020000000000000000">
+System Overview</A>
+</H1>
+
+<P>
+MEDIC is a library that aims to be a complete and conformant
+implementation of the DICOM 3.0 standard. It is assumed throughout
+the document that the reader is familiar with the standard and its medical
+applications; no further attempt will be made to explain the issues within
+the scope of the standard. Since the standard explicates protocols and
+behavior, leaving the implementation details unspecified, there is a host
+of choices for the implementor to make. In particular, one chooses
+which subset of the standard he shall aim to implement, which platform
+the implementation is going to work on thus how application software
+will use it for DICOM compliance.
+
+<P>
+MEDIC achieves this by a faithful translation of the standard to
+a library that is a collection of programming interfaces which
+are invoked by DICOM applications. It has been meant to be a portable,
+comprehensible, reliable, efficient, extensible and rigorous implementation.
+
+<P>
+It is a framework under which application programmers write DICOM
+code conveniently. When an application works with MEDIC, 
+it behaves as a DICOM Application Entity  which can interoperate
+with other Application Entities. Basically, it allows the programmer
+to manage DICOM objects <A NAME="tex2html1"
+  HREF="footnode.html#foot14"><SUP><SPAN CLASS="arabic">1</SPAN></SUP></A>, and apply various
+DICOM operations including operations over TCP/IP and media storage.
+The design exclusively tries to hide implementation details from the
+user, and gives him abstract services. That's where MEDIC extends
+DICOM. For instance, any application entity started automatically
+becomes SCP for most service classes as well as SCU. Many difficult
+aspects of the implementation are not presented to the user, for
+instance all association happens automatically and user sends commands
+over an association with simple constructs.
+
+<P>
+In summary, MEDIC implements majority of the standard, excluding
+most notably OSI upper layer services and legacy 50-pin connection
+which are both obsolete.
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html62"
+  HREF="Design_Considerations.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html60"
+  HREF="design-spec.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html54"
+  HREF="Introduction.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html63"
+  HREF="Design_Considerations.html">Design Considerations</A>
+<B> Up:</B> <A NAME="tex2html61"
+  HREF="design-spec.html">MEDIC Extends DICOM Imaging</A>
+<B> Previous:</B> <A NAME="tex2html55"
+  HREF="Introduction.html">Introduction</A></DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+Eray Ozkural <erayo@cs.bilkent.edu.tr>
+</ADDRESS>
+</BODY>
+</HTML>

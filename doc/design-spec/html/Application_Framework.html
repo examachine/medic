@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 99.2beta8 (1.42)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Application Framework</TITLE>
+<META NAME="description" CONTENT="Application Framework">
+<META NAME="keywords" CONTENT="design-spec">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v99.2beta8">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="design-spec.css">
+
+<LINK REL="next" HREF="Faithful_Translation_Standa.html">
+<LINK REL="previous" HREF="Architectural_Strategies.html">
+<LINK REL="up" HREF="Architectural_Strategies.html">
+<LINK REL="next" HREF="Faithful_Translation_Standa.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html138"
+  HREF="Faithful_Translation_Standa.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html136"
+  HREF="Architectural_Strategies.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html130"
+  HREF="Architectural_Strategies.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html139"
+  HREF="Faithful_Translation_Standa.html">Faithful Translation of the</A>
+<B> Up:</B> <A NAME="tex2html137"
+  HREF="Architectural_Strategies.html">Architectural Strategies</A>
+<B> Previous:</B> <A NAME="tex2html131"
+  HREF="Architectural_Strategies.html">Architectural Strategies</A>
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00041000000000000000">
+Application Framework</A>
+</H2>
+
+<P>
+MEDIC is an application framework which provides all the back-end
+code for writing DICOM applications. A framework lets the programmer
+employ useful abstractions which solve problems in the application
+domain and sometimes extend them.
+
+<P>
+When MEDIC starts up, it configures itself, initialized subsystems
+such persistence, spawns a multithreaded server that listens on
+the DICOM port, and so on. Much of its functionality is autonomouse,
+the application becomes a DICOM AE simply by using MEDIC. The
+interesting part for the programmer is to use DICOM data types /
+classes and invoking operations. We give components that the user
+can invoke to achieve desired end. 
+
+<P>
+For instance, the user may simply want to decode a single IS VR
+he has spotted. MEDIC allows doing that with a simple code. Moreover,
+he can do things like converting between C++/system data types and
+DICOM types with usual C++ code. It also allows the user to exercise
+high level control over DICOM classes: as an example a user may write
+code to check whether an object contains a certain module, and if that
+is the case perform an operation on that module's attributes. Of
+course, doing attribute-wise operations or coding/decoding a whole
+dataset are as easy. As a proof of this, most of the library itself
+has been written by bootstrapping from low level DICOM functionality.
+
+<P>
+Extensions can be made without much strain. For example, one may want
+to direct on-the-fly DICOM encoder to a UNIX pipe. That is possible,
+since one can write a new stream class that the coder routines may
+use. Adding a new attribute/IOD is as easy, one just writes them in
+the language of the dictionary.
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html138"
+  HREF="Faithful_Translation_Standa.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html136"
+  HREF="Architectural_Strategies.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html130"
+  HREF="Architectural_Strategies.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html139"
+  HREF="Faithful_Translation_Standa.html">Faithful Translation of the</A>
+<B> Up:</B> <A NAME="tex2html137"
+  HREF="Architectural_Strategies.html">Architectural Strategies</A>
+<B> Previous:</B> <A NAME="tex2html131"
+  HREF="Architectural_Strategies.html">Architectural Strategies</A></DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+Eray Ozkural <erayo@cs.bilkent.edu.tr>
+</ADDRESS>
+</BODY>
+</HTML>

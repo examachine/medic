@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 99.2beta8 (1.42)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>SOP Architecture</TITLE>
+<META NAME="description" CONTENT="SOP Architecture">
+<META NAME="keywords" CONTENT="design-spec">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v99.2beta8">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="design-spec.css">
+
+<LINK REL="next" HREF="Adjoining_SOP_Class.html">
+<LINK REL="previous" HREF="Configuration_Files.html">
+<LINK REL="up" HREF="Notes_Developer.html">
+<LINK REL="next" HREF="Adjoining_SOP_Class.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html348"
+  HREF="Adjoining_SOP_Class.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html346"
+  HREF="Notes_Developer.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html340"
+  HREF="Configuration_Files.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html349"
+  HREF="Adjoining_SOP_Class.html">Adjoining an SOP Class</A>
+<B> Up:</B> <A NAME="tex2html347"
+  HREF="Notes_Developer.html">Notes to Developer</A>
+<B> Previous:</B> <A NAME="tex2html341"
+  HREF="Configuration_Files.html">Configuration Files</A>
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION00064400000000000000">
+SOP Architecture</A>
+</H3>
+
+<P>
+One vital point for the library client and developer is the structure of
+SOP's in the MEDIC. As previously stated, MEDIC makes use of compile-time
+classes for the several IOD's, Modules and Messages in the standard; that
+is they are conventional C++ classes. However an SOP is not merely composed
+of a data structure, but pertains to a set of client services which
+incorporate DICOM messaging. Assuredly, SOP is a fundamental abstraction in
+the whole library.
+
+<P>
+MEDIC SOP's have a fairly simple minded organization. A class called SOPs
+registers all known SOP classes, the SOPs class has an instance within the
+DApplication, so features a single instance in the application. SOPs is also
+a proper place to do class-wise initializations except registration for the
+SOP classes.
+
+<P>
+The SOP interface is explained in the MEDIC Reference section, however some
+elaboration is required. First of all, the SOP addresses some raw
+functionality and expects a higher level construct to make use of them (such
+as decoding/encoding). The actual category of such classes are DContext
+descendants. Furthermore, since composite SOP classes and normalized SOP
+classes represent a high level of genericity, they are handled by template
+classes. One template class is defined at present: the
+CompositeSOPClass&lt;class IOD&gt;, though a NormalizedSOPClass&lt;...&gt; is
+also required. The difference emanates from the fact that the normalized SOP
+classes do not always have class and instance ID's in the SOPCommon
+Module.
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html348"
+  HREF="Adjoining_SOP_Class.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html346"
+  HREF="Notes_Developer.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html340"
+  HREF="Configuration_Files.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html349"
+  HREF="Adjoining_SOP_Class.html">Adjoining an SOP Class</A>
+<B> Up:</B> <A NAME="tex2html347"
+  HREF="Notes_Developer.html">Notes to Developer</A>
+<B> Previous:</B> <A NAME="tex2html341"
+  HREF="Configuration_Files.html">Configuration Files</A></DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+Eray Ozkural <erayo@cs.bilkent.edu.tr>
+</ADDRESS>
+</BODY>
+</HTML>

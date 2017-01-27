@@ -1,0 +1,190 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 99.2beta8 (1.42)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Class Generator - Base</TITLE>
+<META NAME="description" CONTENT="Class Generator - Base">
+<META NAME="keywords" CONTENT="design-spec">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v99.2beta8">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="design-spec.css">
+
+<LINK REL="next" HREF="Kernel.html">
+<LINK REL="previous" HREF="Pieces_Ties.html">
+<LINK REL="up" HREF="System_Architecture.html">
+<LINK REL="next" HREF="Kernel.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html202"
+  HREF="Kernel.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html200"
+  HREF="System_Architecture.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html194"
+  HREF="Pieces_Ties.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html203"
+  HREF="Kernel.html">Kernel</A>
+<B> Up:</B> <A NAME="tex2html201"
+  HREF="System_Architecture.html">System Architecture</A>
+<B> Previous:</B> <A NAME="tex2html195"
+  HREF="Pieces_Ties.html">Pieces and Ties</A>
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00052000000000000000">
+Class Generator - Base</A>
+</H2>
+
+<P>
+The first problem was the number of SOP Classes (see PS3.4) in DICOM. There
+are so many data structures with complex data types that it is almost
+impossible to code them in C++ in a straightforward manner. Instead, one
+must manage the structures slightly differently. There are really two
+choices: either one may write a run-time class system or generate
+compile-time classes. Using an auxiliary run-time class system is partly
+discarding the benefits of an object-oriented language, in this case C++.
+Furthermore, using the MFC run-time class system does not make things
+easier. It is not a matter of efficiency but rather a matter of
+comprehensibility and reliability that forced us to choose a compile-time
+system. Then, a compiler has to be written. The Class Generator compiled our
+versions of the long data sheets of the standard into many appropriate C++
+classes. These classes are generated at the aggregate level, utilizing the
+interface of primitive data types and basic encoding and decoding schemes.
+By proper object oriented design, one may define the interface prior to any
+programming: we have followed the same method by writing a compiler that
+generates such classes prior to implementation of core DICOM functionality.
+This method has also assisted us in determining what basic functionality is
+ever required. The high level components in base module are
+illustrated in figure <A HREF="Class_Generator.html#fig:classgen">2</A>.
+
+<P>
+
+<P></P>
+<DIV ALIGN="CENTER"><A NAME="fig:classgen"></A><A NAME="45"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 2:</STRONG>
+A class generator translates DICOM Data Dictionaries into
+      C++ code which becomes DICOM Base library.</CAPTION>
+<TR><TD>
+<DIV ALIGN="CENTER">
+<!-- MATH
+ $\includegraphics[scale=0.3]{medic-classgen.eps}$
+ -->
+    
+</DIV></TD></TR>
+</TABLE>
+</DIV><P></P>
+
+<P>
+The major use of this approach was that the system was flexible, efficient,
+understandable and reliable. The system proved to be flexible because adding
+or removing a class or attribute was no burden. One could augment the class
+system as quick as he could read it. Efficiency comes from the ability to
+make use of built-in static C++ mechanisms such as inheritance instead of
+implementing a custom one. The system was comprehensible because the adapted
+classes were, in the interface, no worse than a typical C++ class; the DICOM
+information model was translated at exactly the same level that it was
+intended. Surely, reliability is a result of moving some operations like
+type checking to compile-time; then, one can be sure that he is accessing
+the right data type. Adapted classes, combined with a persistence mechanism,
+is suitable for implementing DICOM SOP classes.
+
+<P>
+The output C++ code has classes named after information modules and IOD's.
+A top level class contains attributes (with their types denoting their Value
+Representation and Value Multiplicity, see PS3.5), selector and modifier
+methods, string representation methods, and availability checking methods
+for each attribute, nested Coder classes with all Transfer Syntaxes
+supported. An IOD inherits from abstract super classes of its modules. The
+IODs do not just aggregate the attributes from their modules, but inherit
+their abstract interfaces. Also, sub-level classes were generated to be able
+to implement the nested sequences (described in PS3.5). In addition to this,
+the compiler handles mutually exclusive modules and DICOM pointer types. We
+have made use of genericity features of C++, as well. The template mechanism
+enables better setting of some of the key abstractions. We would like to
+explain some of the abstractions at this stage. ``VR'' denotes a Value
+Representation name such as US or AT in the following definitions.
+
+<P>
+<code>Coder&lt;class TS&gt;</code> classes These classes are responsible for the
+encoding of an adapted DICOM class with a transfer syntax denoted by
+TS. They are embedded within the class which they encode.
+
+<P>
+<code>VR</code> Value Representation with Value Multiplicity 1
+
+<P>
+<code>VRf&lt;int arity&gt;</code> Value Representation with a fixed Value Multiplicity of `arity' (ex. 3)
+
+<P>
+<code>VRr&lt;int lower, int upper&gt;</code> Value Representation with a Value
+Multiplicity in the range lower-upper; i.e  1-10.
+
+<P>
+<code>VRv</code> Value Representation with a variable Value Multiplicity (1-N)
+
+<P>
+<code>VRe</code> Value Representation with an even variable Value Multiplicity (1-2N)
+
+<P>
+<code>Seq&lt;class SQ&gt;</code> Nested Sequence of sub-class SQ
+
+<P>
+The generated classes make use of standard C++ library for ease of use and
+efficiency. Specifically, the boolean vectors Coders use are template
+specialization vector&lt;bool&gt; classes.
+
+<P>
+Note that these classes are not declared within the generated code, but in
+the other modules. The generated code is only a client of these classes. The
+C++ programs are then compiled into a library module called MEDIC Base.
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html202"
+  HREF="Kernel.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html200"
+  HREF="System_Architecture.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html194"
+  HREF="Pieces_Ties.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html203"
+  HREF="Kernel.html">Kernel</A>
+<B> Up:</B> <A NAME="tex2html201"
+  HREF="System_Architecture.html">System Architecture</A>
+<B> Previous:</B> <A NAME="tex2html195"
+  HREF="Pieces_Ties.html">Pieces and Ties</A></DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+Eray Ozkural <erayo@cs.bilkent.edu.tr>
+</ADDRESS>
+</BODY>
+</HTML>

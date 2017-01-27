@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 99.2beta8 (1.42)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Sketch Board</TITLE>
+<META NAME="description" CONTENT="Sketch Board">
+<META NAME="keywords" CONTENT="design-spec">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v99.2beta8">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="design-spec.css">
+
+<LINK REL="next" HREF="How_Start_MEDIC.html">
+<LINK REL="previous" HREF="Notes_Developer.html">
+<LINK REL="up" HREF="Notes_Developer.html">
+<LINK REL="next" HREF="How_Start_MEDIC.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html318"
+  HREF="How_Start_MEDIC.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html316"
+  HREF="Notes_Developer.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html310"
+  HREF="Notes_Developer.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html319"
+  HREF="How_Start_MEDIC.html">How to Start a</A>
+<B> Up:</B> <A NAME="tex2html317"
+  HREF="Notes_Developer.html">Notes to Developer</A>
+<B> Previous:</B> <A NAME="tex2html311"
+  HREF="Notes_Developer.html">Notes to Developer</A>
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION00064100000000000000">
+Sketch Board</A>
+</H3>
+
+<P>
+The MEDIC is the result of our vision of a robust system that employs DICOM,
+therefore the library has not been pictured as a black box which supports
+some of the standard but rather as an animate company to it. The
+architecture naturally exposes some deficiencies, however it is our belief
+that they can be remedied with little labor. The developer must reckon that
+the object-oriented design should be maintained, with the class semantics
+closely paralleling that of concepts in the standard. Whenever the rational
+connections dissolve into daily fixes, the library must be revised. We have
+considered that the primary issue is to facilitate the making of DICOM
+compliant application programs: the conformance of the library is not
+sufficient by itself. Then, the features that an application programmer
+anticipates should be in the library. One implication of this statement is a
+rule of minimal usage, the application programmer expects to give only the
+required information to a subsystem, that is he wishes to confront a slim
+interface, with the chance of selecting beyond default modes of operation.
+
+<P>
+As seen in some example code fragments in the DICOM documents, a programmer
+wants to open an association, command some DICOM messages sequentially , and
+shut it down; besides there is a high contingency that he would like to
+direct the objects in a smooth fashion. We concede then, that the programmer
+must be able to perform all these tasks simply and efficiently. The MEDIC is
+adjusted towards making common operations easier while allowing fancier
+ones. We have first concentrated on the object system, inheritance
+relations, abstract classes and methods, information retrieval and
+manipulation, then moved on to decoding/encoding, message passing and
+application framework, always taking these aspects of design into account.
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html318"
+  HREF="How_Start_MEDIC.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html316"
+  HREF="Notes_Developer.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html310"
+  HREF="Notes_Developer.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html319"
+  HREF="How_Start_MEDIC.html">How to Start a</A>
+<B> Up:</B> <A NAME="tex2html317"
+  HREF="Notes_Developer.html">Notes to Developer</A>
+<B> Previous:</B> <A NAME="tex2html311"
+  HREF="Notes_Developer.html">Notes to Developer</A></DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+Eray Ozkural <erayo@cs.bilkent.edu.tr>
+</ADDRESS>
+</BODY>
+</HTML>

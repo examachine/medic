@@ -1,0 +1,217 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 99.2beta8 (1.42)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Objectives</TITLE>
+<META NAME="description" CONTENT="Objectives">
+<META NAME="keywords" CONTENT="design-spec">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v99.2beta8">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="design-spec.css">
+
+<LINK REL="previous" HREF="Constraints.html">
+<LINK REL="up" HREF="Design_Considerations.html">
+<LINK REL="next" HREF="Architectural_Strategies.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html114"
+  HREF="Architectural_Strategies.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html112"
+  HREF="Design_Considerations.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html108"
+  HREF="Constraints.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html115"
+  HREF="Architectural_Strategies.html">Architectural Strategies</A>
+<B> Up:</B> <A NAME="tex2html113"
+  HREF="Design_Considerations.html">Design Considerations</A>
+<B> Previous:</B> <A NAME="tex2html109"
+  HREF="Constraints.html">Constraints</A>
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00034000000000000000">
+Objectives</A>
+</H2>
+
+<P>
+Indeed, a DICOM implementation is about realizing an object system
+with the characteristics previously mentioned. The main goal of
+a DICOM implementation is interoperability. Nevertheless,
+interoperability has a cost. Internal representations will have to
+be converted to interchangeable representations, the application
+will have to implement complex protocols in order to communicate
+with other DICOM applications, and behave accordingly to the standard.
+For instance, images will be converted from platform specific display
+memory to a complicated DICOM object which encapsulates many
+attributes about an image having a binary representation
+specified in the standard, and vica versa.
+Likewise for non-image information such
+as study data or reports. This entails in itself providing mandatory
+attributes, and a host of binary parsing and generation code at
+various levels <A NAME="tex2html2"
+  HREF="footnode.html#foot20"><SUP><SPAN CLASS="arabic">2</SPAN></SUP></A>. The object representations maintained this way are
+useless without specifying an operation on them. Typically, one
+stores, fetches and manipulates this data on a distributed system
+connected with TCP/IP or stores them on storage media such as CD-R.
+In doing that each target has its own protocols. Processing over
+the network requires conforming to an OO RPC protocol which is the
+focus of DICOM3.0. Most services are defined this way, and besides
+requiring a plentitude of message passing semantics and a large
+protocol FSM, each one has its own service semantics. For instance,
+when another application stores an image object on us we should store
+it in a persistent way which may be accessed later. Writing and
+reading storage media requires directory and file services which also
+demand the same attention. Basically the interoperability cost is
+incurred by the code that maps application semantics to DICOM
+semantics. A DICOM object has many essential features. For instance,
+it needs to have a class and instance UID. Having to specify these
+special features and communication/storage code is arduous in
+traditional implementations. The development cost is further increased
+by diminished reliability and poor maintainability of bloated code.
+
+<P>
+MEDIC aims to cut down this cost by enhancing DICOM development with
+an advanced application framework. There are recurrent themes
+throughout the implementation. First, each used feature of the
+standard is translated into a first class construct in the host
+language. That is, we deliberately avoid having anything remotely
+similar to various <SPAN  CLASS="textit">ad hoc</SPAN> object models that are constantly
+being promoted recently. If there is a class, it is a class in the
+language. If there is a type, the implementation is a type in the
+language. We stick to exact translation, semantics already present
+in the implementation language are used and not augmented with
+auxiliary and inferior systems. The second theme is minimizing user
+code length. Whatever DICOM task the user wishes to perform, he should
+be able to accomplish it with a very short amount of <SPAN  CLASS="textit">abstract</SPAN>
+code. In the user codes, we give attention to optimizing the common
+cases and still giving a high level of freedom to the programmer.
+
+<P>
+This being said, we should clarify the design goals mentioned. MEDIC
+has the following design goals. In the following text, we describe
+in what way the design goal is required and how we have achieved it.
+<DL>
+<DT><STRONG>portable</STRONG></DT>
+<DD>DICOM applications may be implemented on a wide range
+of hardware. Dependence on a particular architecture and operating
+system would not be desirable. Although most of the development has
+been done on Windows, we have taken care of portability by minimizing
+and isolating Windows specific code. The platform independent part
+is totally standard C++ and compiles with no difficulty on many
+platforms already.
+</DD>
+<DT><STRONG>comprehensible</STRONG></DT>
+<DD>The biggest disadvantage of DICOM is its
+size. With so many concepts and symbols to keep track of, programmer
+soon gets drowned in the non application specific parts of coding.
+We obtain ease of use by taking advantage of object oriented
+programming. The interface classes are highly abstract and every
+feature in the standard is readily accessible. For instance, changing
+an attribute in an IOD is accomplished by a single line
+of code which is a usual C++ method call. Sending an image over
+network is another one-liner.
+</DD>
+<DT><STRONG>efficient</STRONG></DT>
+<DD>Whenever there are advanced functionality such as
+ message passing and persistence, it is possible
+to implement it very slowly. In a medical imaging application,
+efficiency is cruicial because we have to deal with very large
+volumes of data at a high rate.
+The library has well tuned code that does
+not have any significant overhead which arises from the amount of
+abstraction. We use generic programming internally to capture
+code similarity rather than less efficient object oriented programming
+techniques where necessary. The efficiency however comes not
+from avoiding advanced C++ features as they are used where they have
+been useful. It comes from the fact that we do not resort to an
+artificial type or object system that is not under compiler control
+and optimization. When we decode an object, all that is done is
+executing plain C++ code on the fly which gives us equivalent
+performance to any hand written DICOM parsing routine. Another example
+is the way we treat DICOM data types, one can create a VR on stack
+or heap, as he wishes; similarly for coarse grained data types such
+as modules or IODs.
+</DD>
+<DT><STRONG>extensible</STRONG></DT>
+<DD>Since this is an evolving standard, the
+  implementation must be extensible in almost every aspect. In the
+current implementation, it is quite easy to add new DICOM classes,
+transfer syntaxes and services simply by plugging in required classes
+into the code.
+</DD>
+<DT><STRONG>rigorous</STRONG></DT>
+<DD>Most DICOM implementations suffer from incompleteness.
+ This is not the case with MEDIC because we employ a compiler that
+ generates dataset coder/decoders and an object oriented decomposition
+ has been used to enforce mandatory behavior while still allowing
+ optional behavior. As a result, we have not yet found many DICOM
+ dataset or command that have not been successfully processed by
+ our implementation nor has many of generated datasets or commands
+ have been interpreted as erroneous by other implementations. We have
+ of course spotted bugs in the development which we have fixed and the
+current state of the library is quite rigorous in that respect. All
+protocol violations depicted in the standard are explicitly checked
+and reported if encountered. Thus, for instance it is impossible to
+process a faulty dataset: we do not do any sort of fuzzy parsing, but
+it is also impossible to send an incomplete object over the network.
+</DD>
+<DT><STRONG>reliable</STRONG></DT>
+<DD>In most other implementations, we see that the
+object model is implemented external to the host language and a lot
+of awkward function calls are required to do even the most basic
+operations. That is not the case with MEDIC, because almost every
+operation is through first class constructs which means that strong
+type checking, and other reliability features of C++ are fully employed.
+</DD>
+</DL>
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html114"
+  HREF="Architectural_Strategies.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html112"
+  HREF="Design_Considerations.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html108"
+  HREF="Constraints.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html115"
+  HREF="Architectural_Strategies.html">Architectural Strategies</A>
+<B> Up:</B> <A NAME="tex2html113"
+  HREF="Design_Considerations.html">Design Considerations</A>
+<B> Previous:</B> <A NAME="tex2html109"
+  HREF="Constraints.html">Constraints</A></DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+Eray Ozkural <erayo@cs.bilkent.edu.tr>
+</ADDRESS>
+</BODY>
+</HTML>

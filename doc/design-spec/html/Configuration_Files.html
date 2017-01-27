@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 99.2beta8 (1.42)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Configuration Files</TITLE>
+<META NAME="description" CONTENT="Configuration Files">
+<META NAME="keywords" CONTENT="design-spec">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v99.2beta8">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="design-spec.css">
+
+<LINK REL="next" HREF="SOP_Architecture.html">
+<LINK REL="previous" HREF="How_Start_MEDIC.html">
+<LINK REL="up" HREF="Notes_Developer.html">
+<LINK REL="next" HREF="SOP_Architecture.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html338"
+  HREF="SOP_Architecture.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html336"
+  HREF="Notes_Developer.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html330"
+  HREF="How_Start_MEDIC.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html339"
+  HREF="SOP_Architecture.html">SOP Architecture</A>
+<B> Up:</B> <A NAME="tex2html337"
+  HREF="Notes_Developer.html">Notes to Developer</A>
+<B> Previous:</B> <A NAME="tex2html331"
+  HREF="How_Start_MEDIC.html">How to Start a</A>
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION00064300000000000000">
+Configuration Files</A>
+</H3>
+
+<P>
+MEDIC, by default, checks some configuration files in the directory it is run
+in. The distribution directory must therefore populate some tiny text files
+within the ./etc directory to successfully open the library
+
+<P>
+ae-config.txt: file contains three words, name of the application entity to
+run (not to exceed 16 characters, conforming to AE primitive data type),
+DICOM TCP/IP port, and a numerical identifier for the application entity
+(used in UID generation)
+
+<P>
+dicom-Aes.txt: file contains an entry for each known Application Entity.
+Each entry consists of three words: name of the AE, TCP/IP address, and
+DICOM port number respectively.
+
+<P>
+storage.txt: file holds two words: maximum number of megabytes to use for
+local disk storage, and maximum number of megabytes the application program
+can occupy in memory. These values directly affect the custom virtual memory
+mechanisms in MEDIC.
+
+<P>
+Example of these files may be found in the ./dist directory in the main
+source tree.
+
+<P>
+<BR><HR>
+<ADDRESS>
+Eray Ozkural <erayo@cs.bilkent.edu.tr>
+</ADDRESS>
+</BODY>
+</HTML>

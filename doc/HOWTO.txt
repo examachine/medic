@@ -1,0 +1,83 @@
+
+CTEmu: a DCL Example App
+=-=-=-=-=-=-=-=-=-=-=-=-
+
+CTEmu is an application which emulates the various DICOM operations conveyed
+by a CT modality. The example demonstrates how to use DCL for implementing a
+DICOM Application Entity.
+
+The project settings and the source files must be configured so that
+
++ The application uses MFC as a shared library
+
++ Exception handling and RTTI is enabled
+
++ Runtime library set as MultiThreaded DLL (debug - for Debug release)
+
++ The include paths ..\dcl-kernel\src, ..\kernel mfc lib\src, ..\dcl-gen are specified (*)
+
++ The libraries ..\lib\dcl-kernel.lib, ..\lib\dcl-kernel-mfc.lib, ..\dcl-base.lib are specified (^)
+
++ The preprocesor directive
+
+#include <DCL.hxx>
+
+  is specified in all C++ source files which refer to the libraries.
+
++ The application initializes the DICOM subsytem by calling
+
+    dicom_app.init_class();
+
+  as the last statement of InitInstance() method of your main application class derived from
+  CWinApp.
+
++ The following preprocessor directive is present in your '.rc2' script
+
+#include "..\kernel mfc lib\DCL Resources.rc"
+
++ The application runs in the ..\dist directory in order to access the configuration and storage
+  files
+
+Under compliance with these conditions, your application should compile and run
+successfully as a DICOM Application Entity.
+
+Optionally, you are recommended the following:
+
++ In order to improve the build time, append the following include directive
+  to the StdAfx.h file (+)
+
+#include <DCL.hxx>
+
++ Inserting the compiler directive
+
+#pragma warning(disable:4804)
+
+in your StdAfx.h will provide cleaner builds
+
++ You can control the dicom console as in the following code fragment (which is typical of
+menu event handlers)
+
+void CDCLApplicationView::OnViewDicomConsole() 
+{
+	CMenu* menu = AfxGetMainWnd()->GetMenu();
+
+	if (menu->GetMenuState(ID_VIEW_DICOM_CONSOLE, MF_BYCOMMAND) & MF_CHECKED) {
+		dicom_app.hide_console();
+		menu->CheckMenuItem(ID_VIEW_DICOM_CONSOLE, MF_UNCHECKED);
+	} else {
+		dicom_app.show_console();
+		menu->CheckMenuItem(ID_VIEW_DICOM_CONSOLE, MF_CHECKED);
+	}
+}
+
+
+
+__
+
+Eray Ozkural
+
+Notes:
+*  However, any application specific include paths would precede DCL paths.
+^  If you would like the debug versions use dcl-kernel-debug.lib, dcl-kernel-mfc-debug.lib
+   and dcl-base-debug.lib
++  Of course provided that the precompiled headers are set accordingly.
