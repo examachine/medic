@@ -1,0 +1,14 @@
+* warning: ../dictionaries/TAGDict.txt:2798: Attribute RedPaletteColorLookupTableDescriptor has conditional VR 
+* warning: ../dictionaries/TAGDict.txt:2800: Attribute RedPaletteColorLookupTableDescriptor has conditional VR 
+* warning: ../dictionaries/TAGDict.txt:2805: Attribute GreenPaletteColorLookupTableDescriptor has conditional VR 
+* warning: ../dictionaries/TAGDict.txt:2807: Attribute GreenPaletteColorLookupTableDescriptor has conditional VR 
+* warning: ../dictionaries/TAGDict.txt:2812: Attribute BluePaletteColorLookupTableDescriptor has conditional VR 
+* warning: ../dictionaries/TAGDict.txt:2814: Attribute BluePaletteColorLookupTableDescriptor has conditional VR 
+* warning: ../dictionaries/TAGDict.txt:2882: Attribute LUTDescriptor has conditional VR 
+* warning: ../dictionaries/TAGDict.txt:2884: Attribute LUTDescriptor has conditional VR 
+* warning: ../dictionaries/TAGDict.txt:4280: Attribute AudioSampleData has conditional VR 
+* warning: ../dictionaries/TAGDict.txt:4305: Attribute CurveData has conditional VR 
+* warning: ../dictionaries/TAGDict.txt:4469: Attribute PixelData has conditional VR 
+* warning: ../dictionaries/CIODDict.txt:138: Requirement type invalid
+* warning: ../dictionaries/CIODDict.txt:170: Requirement type invalid
+* warning: ../dictionaries/CIODDict.txt:198: Requirement type invalid

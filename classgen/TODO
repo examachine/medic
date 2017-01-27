@@ -1,0 +1,73 @@
+..ToDo..
+=-=-=-=-
+
+-- FIX: Sequences don't get generated correctly!! Work them out!!
+
+-- Better coding scheme (!!!! 'private' attributes made public now!!)
+
+-- Output cleanup (indentation, etc)
+
+-- nested duplicate datasets... same Seq defined multiply in differing
+   modules. this should be fixed.
+   - check if there are indeed datasets like that and move them to
+     toplevel so that they are shared among modules
+   - modify references to those datasets
+
+-- Overriding: requirement type overriding for duplicate attributes.
+   (the most relaxed type [with highest number] is accepted)
+
+-- Implement MUTEX keyword. In fact those sections in an IOD denote somewhat *subtyping*, but
+   keep all attributes together and insert a kludge in the Coder classes.
+
+\- Conditional VR implementation: standard OB/OW handling for attributes like PixelData and CurveData
+
+-- Add Failed SOP Instance UID List (0008,0058) to Identifier structures for complete C-GET func.
+
+-- Modulewise operations: avail, copy, ref, etc...
+
+-- Handle pointer identifiers better in IOD::add_module()
+
+-- Decode/Encode Repeating groups appropriately, probably by puttin'
+   in a flag in auto-gen Attributes and handling of rep. groups in Transfer Syntaxes
+
+-- Elaborate usage of a module
+
+++ sequence classes go into abstract modules...
+
+++ Implement a primitive module usage handling
+
+++ Nested classes cause problems with VC5.0, make Seq classes un-nested
+
+++ Rewrite Parser::gen_tagdef with meta class Attribute
+
+Bugs:
+-=-=-
+
+-- Duplicate attributes: attributes with same tags die if they're
+   complex (like Seq)
+
+-- There are some attributes with the same name that are repeating
+   groups and as SQs. This is really annoying.
+
+++ USImageIOD dies because it has duplicate modules in MUTEX sections
+   _which are not implemented. Write code that instantiates duplicate
+   MUTEX modules only once.
+
+Notes:
+-=-=-=
+
+** there's some bug with the not-implemented notes for repeating groups
+
+** 50xx and 60xx repeating groups are discarded altogether, we don't
+   need them neither for the release nor any preliminary purpose
+
+** Conditional Requirement Types are omitted currently, cond. types are coerced
+   into optional ones
+
+** For the time being, first attr. of each module is scanned, and if
+   they are not there, a skip flag for that module is set, which
+   makes decoders of that attribute optional.  Collisions do not have
+   to be handled seperately with this scheme.
+
+** The default VR values are assumed to be handled by constructors, bug fixed
+

@@ -1,0 +1,53 @@
+dnl process the file with autoconf to produce configure script
+
+dnl initialize autoconf and check an id file to find src dir
+AC_REVISION($Revision: 1.7 $)
+AC_INIT(./medic-id)
+dnl initialize automake
+AM_INIT_AUTOMAKE(medic,0.4.0)
+dnl initialize auxiliary shell scripts
+dnl AC_CONFIG_AUX_DIR()
+AM_CONFIG_HEADER(config/config.h)
+
+dnl checks for programs
+CXXFLAGS=-g
+AC_PROG_CC
+AC_PROG_CXX
+AC_ISC_POSIX
+AC_PROG_YACC
+AM_PROG_LEX
+AM_PROG_LIBTOOL
+
+dnl checks for libraries
+AC_CHECK_LIB(fl, main)
+
+dnl checks for header files
+AC_STDC_HEADERS
+AC_CHECK_HEADERS(malloc.h unistd.h)
+
+dnl checks for typedefs
+
+dnl checks for structures
+
+dnl checks for compiler characteristics
+AC_C_CONST
+AC_C_INLINE
+
+dnl checks for library functions
+AC_FUNC_ALLOCA
+
+dnl checks for system services
+
+dnl config header that contains defines and stuff
+dnl AC_CONFIG_HEADER(config/config.h:config/config.h.in)
+
+dnl specify optional files to create
+AC_OUTPUT([Makefile classgen/Makefile classgen/autogen/Makefile \
+kernel/Makefile kernel/src/Makefile platform/Makefile platform/src/Makefile])
+
+dnl specify additional shell commands
+AC_OUTPUT_COMMANDS([echo Configuration scripts created.])
+
+dnl properly define output variable set_make for Makefile variable $MAKE
+dnl @SET_MAKE@ must be issued in Makefile.in for this to function
+AC_PROG_MAKE_SET

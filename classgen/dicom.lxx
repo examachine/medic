@@ -1,0 +1,181 @@
+/*
+** Lexical analyzer for DICOM class generator
+**
+** Flex source
+**
+** exa
+**
+*/
+
+
+%{
+#include "General.hxx"
+#include "Parser.hxx"
+#include "dicom-grammar.h"
+#include "dicom.hxx"
+%}
+
+/* Options */
+
+%option never-interactive stack
+%option nodefault
+%option nodebug
+
+/* Regular Definitions */
+
+digit		[0-9A-F]
+digits		{digit}+
+punctuation	[\(\),\-\/\|\\]
+xtra		[\ \_\.:\[\]&\']
+alpha		[A-Za-z]|{xtra}
+alphanum	{digit}|{alpha}
+xalpha		[A-Za-z]|{xtra}|{punctuation}
+xalphanum	{digit}|{xalpha}
+
+lit_int		{digits}
+id		{alpha}{alphanum}*
+xid		{xalphanum}+
+cid		[A-Za-z0-9]+
+
+/* REs that are removed from the source file */
+white_space	[ \t]+
+
+/* Start Conditions */
+/* exclusive */
+%x keyword punct punct_shortid punct_strip nopunct nopunct_idfirst newline comment
+
+/* Rules */
+
+%%
+.			yyless(0); BEGIN(keyword);
+
+<keyword>{
+  UIDS			return UIDS;
+  TAGS			return TAGS;
+  MODULES		return MODULES;
+  IODS			return IODS;
+  MODULE		return MODULE;
+  IOD			return IODT;
+  MUTEX			return MUTEX;
+  ENUM			return ENUM;
+  ENDENUM		return ENDENUM;
+  NONE			return NONE;
+  MESSAGES      return MESSAGES;
+  MESSAGE       return MESSAGE;
+
+  \n            parser.line_number++; parser.total_number_of_lines++; BEGIN(newline);
+  \{			BEGIN(comment);		/* consume comments */
+  {white_space}	        			/* and white space  */
+
+
+  . {
+    if (parser.no_punct) {
+	if (parser.expect_id)
+	  { yyless(0); BEGIN(nopunct_idfirst); }
+	else
+	  { yyless(0); BEGIN(nopunct); }
+    }
+    else {
+	if (parser.short_id)
+	  { yyless(0); BEGIN(punct_shortid); }
+	else if (parser.strip_punct)
+	  { yyless(0); BEGIN(punct_strip); }
+	else
+	  { yyless(0); BEGIN(punct); }
+    }
+  }
+
+}
+
+<nopunct_idfirst>{
+  \(			BEGIN(keyword); return LP;
+  \)			BEGIN(keyword); return RP;
+  ,				BEGIN(keyword); return COM;
+  \/			BEGIN(keyword); parser.warn("got a slash"); return SLASH;
+  \-			BEGIN(keyword); return DASH;
+  \|			BEGIN(keyword); return OR;
+  \\			BEGIN(keyword); return BS;
+
+  {xid} {
+	yylval.id=Parser::strip_chars(yytext);
+	BEGIN(keyword); return ID;
+   }
+
+  . yyless(0); BEGIN(keyword);
+}
+
+<nopunct>{
+
+  {lit_int} { /* hexadecimal */
+    int val = 0;
+	sscanf(yytext, "%x", &val);
+    yylval.integer = val; BEGIN(keyword); return L_INT;
+	// cout << "lit_int:" << yytext << " is " << val << endl;
+  }
+
+  {id} {
+	yylval.id=Parser::strip_chars(yytext);
+	BEGIN(keyword); return ID;
+   }
+
+  \(			BEGIN(keyword); return LP;
+  \)			BEGIN(keyword); return RP;
+  ,				BEGIN(keyword); return COM;
+  \/			BEGIN(keyword); return SLASH;
+  \-			BEGIN(keyword); return DASH;
+  \|			BEGIN(keyword); return OR;
+  \\			BEGIN(keyword); return BS;
+
+  . cout << "cannot match " << yytext[0] << endl;
+}
+
+<punct>{
+  {xid} yylval.id = new string(yytext); BEGIN(keyword); return ID;
+  . yyless(0); BEGIN(keyword);
+}
+
+<punct_strip>{
+  {xid} {
+	yylval.id=Parser::strip_chars(yytext);
+	BEGIN(keyword); return ID;
+  }
+  . yyless(0); BEGIN(keyword);
+}
+
+<punct_shortid>{
+  \(			BEGIN(keyword); return LP;
+  \)			BEGIN(keyword); return RP;
+  ,			BEGIN(keyword); return COM;
+  \/			BEGIN(keyword); return SLASH;
+  \-			BEGIN(keyword); return DASH;
+  \|			BEGIN(keyword); return OR;
+  \\			BEGIN(keyword); return BS;
+  {cid} yylval.id = new string(yytext); BEGIN(keyword); return ID;
+  . yyless(0); BEGIN(keyword);
+}
+
+<newline>{
+  \n			parser.line_number++; parser.total_number_of_lines++;
+  {white_space}	        /* white space */
+  <<EOF>>		BEGIN(keyword); return NL;
+  .			yyless(0); BEGIN(keyword); return NL;
+}
+
+<comment>{
+  [^\{\}]+			                 /* inside comment */
+  \{			cout << "comment error" << endl; /* syntax error */
+  \}			BEGIN(keyword);		 /* end of comment */
+  \n			parser.line_number++;
+}
+
+
+
+%%
+
+/* End of rules */
+
+/* Additional C code */
+
+int yywrap() {
+	return 1;
+}

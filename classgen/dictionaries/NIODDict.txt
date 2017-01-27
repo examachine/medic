@@ -1,0 +1,92 @@
+IODS
+
+IOD Patient
+m SOPCommon
+m PatientRelationship
+m PatientIdentification
+m PatientDemographic
+m PatientMedical
+
+IOD Visit
+m SOPCommon
+m VisitRelationship
+m VisitIdentification
+m VisitStatus
+m VisitAdmission
+m VisitDischarge
+m VisitScheduling
+
+IOD Study
+m SOPCommon
+m StudyRelationship
+m StudyIdentification
+m StudyClassification
+m StudyScheduling
+m StudyAcquisition
+m StudyRead
+
+IOD StudyComponent
+m SOPCommon
+m StudyComponentRelationship
+m StudyComponentAcquisition
+m StudyComponent
+
+IOD Results
+m SOPCommon
+m ResultsRelationship
+m ResultsIdentification
+m ResultsImpressions
+
+IOD Interpretation
+m SOPCommon
+m InterpretationRelationship
+m InterpretationIdentification
+m InterpretationState
+m InterpretationRecording
+m InterpretationTranscription
+m InterpretationApproval
+
+IOD BasicFilmSession
+m SOPCommon
+m BasicFilmSessionPresentation
+m BasicFilmSessionRelationship
+
+IOD BasicFilmBox
+m SOPCommon
+m BasicFilmBoxPresentation
+m BasicFilmBoxRelationship
+
+IOD BasicImageBox
+m SOPCommon
+m ImageBoxPixelPresentation
+m ImageBoxRelationship
+
+IOD BasicAnnotationBox
+m SOPCommon
+m BasicAnnotationPresentation
+
+IOD PrintJob
+m SOPCommon
+m PrintJob
+
+IOD Printer
+m SOPCommon
+m Printer
+
+IOD VOILUTBox
+m SOPCommon
+m VOILUT
+
+IOD ImageOverlayBox
+m SOPCommon
+m ImageOverlayBoxPresentation
+m ImageOverlayBoxRelationship
+
+IOD StorageCommitment
+m SOPCommon
+m StorageCommitment
+
+IOD BasicDirectory
+u SOPCommon
+m FileSetIdentification
+u DirectoryInformation

@@ -1,0 +1,271 @@
+/* -*-c++-*-
+** Bison source for DICOM class generator
+**
+** exa
+*/
+
+
+/* C declarations */
+
+%{
+#define YYDEBUG 1
+#include "General.hxx"
+#include "Parser.hxx"
+#include "dicom.hxx"
+
+int yyerror(char *s);
+
+Parser parser("dcg v2.1");
+
+%}
+
+
+/* Types of tokens */
+
+%union {
+	int		integer;
+	string		*id;
+}
+
+
+/* Token Declarations */
+
+/*
+** Delimiters and Seperators 
+*/
+
+%token NL LP RP COM DASH SLASH OR BS EOFT
+
+/* Reserved keywords */
+%token UIDS TAGS MODULES IODS MODULE ENUM ENDENUM IODT MUTEX NONE MESSAGES MESSAGE
+
+/* Literals */
+%token <integer> L_INT
+
+/* Identifier */
+%token <id> ID
+
+/* Types of non-terminals */
+
+%%
+
+/* LALR(1) Grammar together with S-attributed semantic rules */
+
+/* we have different source files for each part of parsing process */
+
+dicom:
+	uids
+	| tags
+	| modules
+	| iods
+	| messages
+	;
+
+uids:
+	UIDS NL
+	{ cout << "Reading UID's " << endl; } 
+	uid_list
+	{ cout << parser.number_of_uids << " UIDs read" << endl;
+	  parser.no_punct=1; }
+	;
+
+uid_list:
+	uid_list ID NL ID NL ID NL
+	{ parser.add_uid($2, $4, $6); }
+	|
+	;
+
+tags:
+	TAGS NL
+	{  cout << "Reading tag dictionary" << endl; }
+	tag_list
+	{ cout << parser.number_of_tags << " tags read" << endl; }
+ 	;
+
+tag_list:
+	tag_list
+	tag NL
+	{ parser.no_punct=0; parser.strip_punct=1; }
+	ID NL
+	{ parser.add_tid(*$5); delete $5; }
+	vrvmlist
+	| { }
+	;	
+
+tag:
+	LP tag_group COM tag_element RP
+	{ }
+
+tag_group:
+	L_INT { parser.add_tg($1, 0); } /*{ cerr << "group:" << $1 << endl;}*/ 
+	|
+	L_INT ID { parser.add_tg($1, 1); delete $2; }
+	;
+
+tag_element:
+	L_INT { parser.add_te($1, $1); }
+	|
+	L_INT DASH L_INT { parser.add_te($1, $3); }
+	;
+
+/* we seek at least 1 vr/couple */
+vrvmlist:
+	vrvmlist vrvmitem
+	| vrvmitem
+	;
+
+vrvmitem:
+	{ parser.no_punct=0; parser.strip_punct=0; }
+	{ parser.short_id=1; }
+	vr NL
+	{ parser.no_punct=1; parser.short_id=0; }
+	vm NL
+	{ parser.add_tagdef(); }
+	;
+
+vr:
+	NONE { parser.add_tvr(string("")); }
+	|
+	ID { parser.add_tvr(*$1); delete $1; } /* pretty normal VR */
+	| ID SLASH ID
+	{ parser.add_tvr(*$1); delete $1;
+	  parser.warn("Attribute " + parser.current_td.name +
+			" has conditional VR ");}
+	| ID BS ID
+	/* choose the second .... */
+	{ parser.add_tvr(*$3); delete $1; delete $3; /* I'll do template specialization */
+	  parser.warn("Attribute " + parser.current_td.name +
+	  " has conditional VR "); }
+	;
+
+vm:
+	ID { parser.add_tvm( VM(0,0,2) ); delete $1; parser.warn("Obsolete VM=n"); }	/* 1-n */
+	| L_INT {parser.add_tvm( VM($1,$1,0) ); } /* c */
+	| L_INT DASH L_INT { parser.add_tvm( VM($1,$3,1) ); } /* c1-c2 */
+	| L_INT DASH ID {parser.add_tvm( VM(0,0,2) ); delete $3; } /* 1-n */
+	| L_INT DASH L_INT ID {parser.add_tvm( VM(0,0,3) ); delete $4; } /* 2-2n */
+	| NONE {  parser.add_tvm( VM(0,0,0) ); } /* NONE */
+	;
+
+modules:
+	MODULES NL
+	{  cout << "Parsing modules" << endl; }
+	//{ yydebug=1; }
+	{ parser.init_gen(); }
+	module_list
+// 	{ cout << endl << parser.modules.size << " modules parsed" << endl; }
+	;
+
+// at least 1 module
+module_list:
+	module_list
+	module
+	| module
+	;
+
+module:
+	MODULE {parser.expect_id=1;} ID NL {parser.expect_id=0;}
+	{ parser.begin_module($3); }
+	attribute_list
+// 	{ parser.gen_module(); }
+	;
+
+attribute_list:
+	attribute_list
+	{ parser.prev_depth = parser.nest_depth; }
+	attribute
+	{ parser.add_attr(); }
+	|
+	;
+
+attribute:
+	nesting tag
+	{ parser.expect_id = 1; }
+	attr_type NL
+	{ parser.expect_id = 0; }
+	optional_enum
+	;
+
+nesting:
+	nesting SLASH { parser.nest_depth++; }
+	| { parser.nest_depth=0; }
+	;
+
+attr_type:
+	ID { parser.set_ctype(*$1); delete $1; }
+	| { parser.set_ctype("4"); }
+	;
+
+optional_enum:
+	ENUM NL
+	/* list of enumerations here */
+	ENDENUM NL
+	|
+	;
+
+iods:
+	IODS NL
+	{ cout << "Parsing IOD definitions" << endl; }
+	iod_list
+// 	{ cout << parser.number_of_iods << " IOD's generated" << endl; }
+	;
+
+iod_list:
+	iod_list
+	iod
+	| iod
+	;
+
+iod:
+	{ parser.no_punct = 0; parser.short_id = 1; }
+	IODT ID NL
+	{ parser.begin_iod($3); }
+	iod_components
+	;
+
+iod_components:
+	iod_components iod_component
+	|
+	;
+
+iod_component:
+	ID ID NL
+	{ parser.add_module($2, $1); }
+	/* { cout << *$2 << endl; } */
+	|
+	MUTEX NL
+	{ parser.current_mutex++; }
+	;
+
+messages:
+	MESSAGES NL
+	{ parser.no_punct=1; parser.short_id=0; parser.strip_punct=0; }
+	{  cout << "Parsing message definitions" << endl; }
+	//{ yydebug=1; }
+	{ parser.init_gen(); }
+	message_list
+// 	{ cout << parser.number_of_msgs << " messages generated" << endl; }
+	;
+
+// at least 1 module
+message_list:
+	message_list
+	message
+	| message
+	;
+
+message:
+	MESSAGE {parser.expect_id=1;} ID NL {parser.expect_id=0;}
+	{ parser.begin_message($3); }
+	attribute_list
+	;
+
+/* End of Grammar */
+
+%%
+
+int yyerror(char *s)
+{
+  parser.error(s + string(", was reading token: ") + string(yytext));
+  return 1;
+}
