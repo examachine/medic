@@ -1,0 +1,22 @@
+-- Fixes
+  + The story with SOP_TSs and static template instantiation.
+
+-- Improvements
+  - Better data conversion (strings, numbers, dates, times, etc.)
+
++/ Construct a build environment that's compatible with GNU standards
+  + Clean and comprehensible makefiles
+  + Provide standard targets
+  / Use search features if necessary
+  + Split into multiple makefiles if necessary
+  - Examine the autoconf/automake env. used by gtkmm
+
+/- Better portability
+
+/- Refactor the library into more sensible modules
+  - split kernel into autogen-interface and framework!!
+  - start with splitting kernel
+    idea:
+      dicom_types: the types that implement dicom
+      dicom_SCUs: clients
+      dicom_SCPs: services
