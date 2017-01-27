@@ -1,0 +1,5 @@
+
+
++ SOP must be defined in the SOPs class
+
++ SOP must be derived from the template base class: SOPClass
