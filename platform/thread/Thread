@@ -1,0 +1,19 @@
+//
+//
+// C++ Interface for module: Thread
+//
+// Description: 
+//
+//
+// Author: exa
+//
+//
+
+#ifndef Thread_Library
+#define Thread_Library
+
+#include <Thread.hxx>
+#include <Semaphore.hxx>
+#include <Critical_Region.hxx>
+
+#endif

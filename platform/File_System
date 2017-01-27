@@ -1,0 +1,17 @@
+//
+//
+// C++ Interface for module: File_System
+//
+// Description: 
+//
+//
+// Author: exa
+//
+//
+
+#ifndef File_System_Interface
+#define File_System_Interface
+
+#include "filesystem/File.hxx"
+
+#endif

@@ -1,0 +1,5 @@
+-- portable file and directory classes
+/- platform independent Date and Time classes
+/- portable sys calls for time/value conversion etc. 
+/- Portable threads!!
+/- Portable sockets!!
